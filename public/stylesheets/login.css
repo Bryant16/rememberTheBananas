@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+.left {
+    background-color: green;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: yellow;
+    width: 50%;
+    justify-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.quote {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: white;
+}
+
+.author {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #ACCBEA;
+}
