@@ -1,8 +1,22 @@
-extends layout.pug
-
-block content
-    form()
+html
+  head
+      block head
+        title= title
+        link(rel='stylesheet' href='/stylesheets/login.css')
+  body
+    div
+        p Been Here Before? Welcome back!
+        form(action="/login" method="post")
+            input(name="_csrf" value=token type="hidden")
+            div
+                input(name="userName" type="text" placeholder="Username and Email" value="" id="")
+            div
+                input(name="userName" type="text" placeholder="Password" value="" id="")
+            div
+                button(type="submit") Log in
 
 // csrfToken()
 // form username and password and email
-//
+// buttons: login, create user --maybe forget password
+// implement a logo and theme //bluebackground
+// required
