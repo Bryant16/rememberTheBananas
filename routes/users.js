@@ -108,17 +108,19 @@ router.post('/signup', validateNewUser, csrfProtection, asyncHandler(async (req,
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const user = await User.create({ username, email, hashedPassword, salt });
-    return res.json({
-      user:
-      {
-        username,
-        email,
-        password
-      }
-    })
+    loginUser(req, res, user);
+    return res.redirect('/app');
+    // return res.json({
+    //   user:
+    //   {
+    //     username,
+    //     email,
+    //     password
+    //   }
+    // })
     // res.redirect('/app');
-  }else {
-    const errors = validatorErrors.array().map((error)=> error.msg);
+  } else {
+    const errors = validatorErrors.array().map((error) => error.msg);
     res.render('/signup', {
       title: 'Sign up',
       user,
@@ -126,9 +128,12 @@ router.post('/signup', validateNewUser, csrfProtection, asyncHandler(async (req,
       csrfToken: req.csrfToken()
     });
   }
+}));
 
-
-  loginUser(req, res, user);
-}))
+router.post('/logout', (req, res) => {
+  logoutUser(req, res);
+  // might need to change to /login
+  res.redirect('/users/login');
+});
 
 module.exports = router;
