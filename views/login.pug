@@ -9,7 +9,7 @@ html
     div.left
         div.logo
             p Remember the bananas
-            img(src="images/chimp.png")
+            img(src="/images/chimp.png")
         div.saying
             p.quote "I do remember, and then when I try to remember, I forget."
             p.author - A.A. Milne, Winnie-the-Pooh
@@ -19,12 +19,18 @@ html
         div.inputs
             p.message Been Here Before? Welcome back!
             form(action="/users/login" method="post")
+                if errors
+                    div.alert
+                        p The following errors occured:
+                        ul
+                            each error in errors
+                                li=error
                 input(name="_csrf" value=token type="hidden")
                 div.login_container
                     div
-                        input.label(name="userName" type="text" placeholder="Username and Email" value=username id="")
+                        input.label(name="userName" type="text" placeholder="Username" value=username required)
                     div
-                        input.label(name="userName" type="text" placeholder="Password" value=password id="")
+                        input.label(name="password" type="password" placeholder="Password" required)
                     div
                         button.label(type="submit") Log in
 

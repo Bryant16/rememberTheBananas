@@ -1,0 +1,21 @@
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+.logo img {
+    max-width: 30%;
+    height: auto;
+}
+
+.logo p {
+    width: 110px;
+    height: auto;
+    font-family: 'Patrick Hand', cursive;
+    font-weight: 700;
+    margin-top: 50px;
+    font-size: 25px;
+    color: white;
+}
