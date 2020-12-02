@@ -120,6 +120,6 @@ div > button.label {
 }
 
 div > button.label:hover {
-    background-image: linear-gradient(45deg, #2ba735, #FFCF00);
+    background-image: linear-gradient(45deg, #FFCF00, #2ba735);
     /* transition:slidebg 5s linear infinite; */
 }

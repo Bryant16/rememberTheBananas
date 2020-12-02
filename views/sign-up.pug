@@ -3,22 +3,27 @@ html
       block head
         title= title
         link(rel='stylesheet' href='/stylesheets/signup.css')
+        link(rel="preconnect" href="https://fonts.gstatic.com")
+        link(href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet")
   body
     div.left
         div.logo
             p Remember the bananas
-            img(src="images/chimp.png")
+            img(src="/images/chimp.png")
         div.statement
+            div
+                img(src="/images/3monkey.png")
+                //- img(src="/images/banana.png")
+                //- img(src="/images/banana.png")
             p.quote Join millions of people getting more organized and productive!
     div.right
         div.login_button
-                button.create_user(type="submit") Create User
-        div
+                button.login(type="submit") Log in
+        div.inputs
+            p.message Sign up for free
             form(action="/users/signup" method="post")
                 input(name="_csrf" value=token type="hidden")
                 div.login-container
-                    div
-                        button
                     div
                         input.label(name="username" type="text" placeholder="Username" value=username)
                     div
@@ -26,4 +31,4 @@ html
                     div
                         input.label(name="email" type="email" placeholder="email" value=password)
                     div
-                        button.label(type="submit") Submit
+                        button.label(type="submit") Sign Up!
