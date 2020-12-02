@@ -8,6 +8,7 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const { environment, sessionSecret } = require('./config');
 
 const app = express();
 
@@ -25,7 +26,8 @@ const store = new SequelizeStore({ db: sequelize });
 
 app.use(
   session({
-    secret: '38d49c45-7c4e-4c7b-b3b9-ac7547b7b79b',
+    name: 'remember-banana.sid',
+    secret: sessionSecret,
     store,
     saveUninitialized: false,
     resave: false,
