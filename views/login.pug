@@ -3,23 +3,30 @@ html
       block head
         title= title
         link(rel='stylesheet' href='/stylesheets/login.css')
+        link(rel="preconnect" href="https://fonts.gstatic.com")
+        link(href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet")
   body
     div.left
-        p.quote "I do remember, and then when I try to remember, I forget."
-        p.author - A.A. Milne, Winnie-the-Pooh
+        div.logo
+            p Remember the bananas
+            img(src="images/chimp.png")
+        div.saying
+            p.quote "I do remember, and then when I try to remember, I forget."
+            p.author - A.A. Milne, Winnie-the-Pooh
     div.right
-        p.message Been Here Before? Welcome back!
-        form(action="/users/login" method="post")
-            input(name="_csrf" value=token type="hidden")
-            div.login-container
-                div
-                    button
-                div
-                    input.label(name="username" type="text" placeholder="Username" value=username id="")
-                div
-                    input.label(name="password" type="text" placeholder="Password" value=password id="")
-                div
-                    button.label(type="submit") Log in
+        div.user_button
+            button.create_user(type="submit") Create User
+        div.inputs
+            p.message Been Here Before? Welcome back!
+            form(action="/users/login" method="post")
+                input(name="_csrf" value=token type="hidden")
+                div.login_container
+                    div
+                        input.label(name="userName" type="text" placeholder="Username and Email" value=username id="")
+                    div
+                        input.label(name="userName" type="text" placeholder="Password" value=password id="")
+                    div
+                        button.label(type="submit") Log in
 
 // csrfToken()
 // form username and password and email
