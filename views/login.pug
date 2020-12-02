@@ -8,15 +8,16 @@ html
         p.quote "I do remember, and then when I try to remember, I forget."
         p.author - A.A. Milne, Winnie-the-Pooh
     div.right
-        p Been Here Before? Welcome back!
+        p.message Been Here Before? Welcome back!
         form(action="/login" method="post")
             input(name="_csrf" value=token type="hidden")
-            div
-                input(name="userName" type="text" placeholder="Username and Email" value="" id="")
-            div
-                input(name="userName" type="text" placeholder="Password" value="" id="")
-            div
-                button(type="submit") Log in
+            div.login-container
+                div
+                    input.label(name="userName" type="text" placeholder="Username and Email" value="" id="")
+                div
+                    input.label(name="userName" type="text" placeholder="Password" value="" id="")
+                div
+                    button.label(type="submit") Log in
 
 // csrfToken()
 // form username and password and email
