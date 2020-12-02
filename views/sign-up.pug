@@ -1,13 +1,29 @@
-form(action="/users/signup" method="post")
-            input(name="_csrf" value=token type="hidden")
-            div.login-container
-                div
-                    button
-                div
-                    input.label(name="username" type="text" placeholder="Username" value=username)
-                div
-                    input.label(name="password" type="text" placeholder="Password" value=password)
-                div
-                    input.label(name="email" type="email" placeholder="email" value=password)
-                div
-                    button.label(type="submit") Submit
+html
+  head
+      block head
+        title= title
+        link(rel='stylesheet' href='/stylesheets/signup.css')
+  body
+    div.left
+        div.logo
+            p Remember the bananas
+            img(src="images/chimp.png")
+        div.statement
+            p.quote Join millions of people getting more organized and productive!
+    div.right
+        div.login_button
+                button.create_user(type="submit") Create User
+        div
+            form(action="/users/signup" method="post")
+                input(name="_csrf" value=token type="hidden")
+                div.login-container
+                    div
+                        button
+                    div
+                        input.label(name="username" type="text" placeholder="Username" value=username)
+                    div
+                        input.label(name="password" type="text" placeholder="Password" value=password)
+                    div
+                        input.label(name="email" type="email" placeholder="email" value=password)
+                    div
+                        button.label(type="submit") Submit

@@ -1,0 +1,61 @@
+body {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+.left {
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+.logo img {
+    max-width: 30%;
+    height: auto;
+}
+
+.logo p {
+    width: 110px;
+    height: auto;
+    font-family: 'Patrick Hand', cursive;
+    font-weight: 700;
+    margin-top: 50px;
+    font-size: 25px;
+    color: white;
+}
+
+.right {
+    position: relative;
+    background-color: yellow;
+    width: 50%;
+    padding: 0 20px;
+}
+
+.statement {
+    min-height: 100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.quote {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    margin: 0;
+}
