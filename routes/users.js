@@ -92,6 +92,14 @@ router.post('/signup', validateNewUser, csrfProtection, asyncHandler(async (req,
       }
     })
     // res.redirect('/app');
+  }else {
+    const errors = validatorErrors.array().map((error)=> error.msg);
+    res.render('/signup', {
+      title: 'Sign up',
+      user,
+      errors,
+      csrfToken: req.csrfToken()
+    });
   }
 
 
