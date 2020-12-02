@@ -3,7 +3,6 @@ extends layout
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
-  link(rel="stylesheet" href="/stylesheets/logo.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
@@ -13,6 +12,6 @@ block content
         div.logo
           img(src="/images/chimp.png")
           p Remember the bananas
-        div.buttons 
-          button(type="submit") Log in
-          button(type="submit") Sign up for free
+        ul
+          li: a(href="/users/login") Log in
+          li: a(href="/users/signup" id="sign-up") Sign up for free
