@@ -22,13 +22,21 @@ html
         div.inputs
             p.message Sign up for free
             form(action="/users/signup" method="post")
+                if errors
+                    div.alert
+                        p The following errors occured:
+                        ul
+                            each error in errors
+                                li=error
                 input(name="_csrf" value=token type="hidden")
                 div.login-container
                     div
                         input.label(name="username" type="text" placeholder="Username" value=username)
                     div
-                        input.label(name="password" type="text" placeholder="Password" value=password)
-                    div
                         input.label(name="email" type="email" placeholder="email" value=password)
+                    div
+                        input.label(name="password" type="password" placeholder="Password" value=password)
+                    div
+                        input.label(name="confirmPassword" type="password" placeholder="Confirm Password")
                     div
                         button.label(type="submit") Sign Up!
