@@ -59,7 +59,7 @@ router.post('/login', csrfProtection, validateExistingUser, asyncHandler(async (
 router.get('/signup', function (req, res, next) {
   res.render('signup', { title: 'a/A Express Skeleton Home', token: req.csrfToken() });
 });
-
+// localhost:8080/users/signup
 router.post('/signup', validateNewUser, handleValidationErrors, csrfProtection, asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
   const salt = await bcrypt.genSalt(10);

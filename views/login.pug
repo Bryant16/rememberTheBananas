@@ -9,15 +9,15 @@ html
         p.author - A.A. Milne, Winnie-the-Pooh
     div.right
         p.message Been Here Before? Welcome back!
-        form(action="/login" method="post")
+        form(action="/users/login" method="post")
             input(name="_csrf" value=token type="hidden")
             div.login-container
                 div
                     button
                 div
-                    input.label(name="userName" type="text" placeholder="Username and Email" value=user.username id="")
+                    input.label(name="userName" type="text" placeholder="Username and Email" value=username id="")
                 div
-                    input.label(name="userName" type="text" placeholder="Password" value="" id="")
+                    input.label(name="userName" type="text" placeholder="Password" value=password id="")
                 div
                     button.label(type="submit") Log in
 
