@@ -1,0 +1,13 @@
+form(action="/users/signup" method="post")
+            input(name="_csrf" value=token type="hidden")
+            div.login-container
+                div
+                    button
+                div
+                    input.label(name="username" type="text" placeholder="Username" value=username)
+                div
+                    input.label(name="password" type="text" placeholder="Password" value=password)
+                div
+                    input.label(name="email" type="email" placeholder="email" value=password)
+                div
+                    button.label(type="submit") Submit

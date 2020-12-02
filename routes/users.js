@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const bcrypt = require('bcryptjs');
 const { check } = require("express-validator");
-const { asyncHandler, handleValidationErrors, csrfProtection } = require("../utils");
+const { asyncHandler, handleValidationErrors, csrfProtection} = require("../utils");
 const db = require('../db/models');
 const { User } = db;
 const { loginUser, logoutUser } = require('../auth');
@@ -38,29 +38,30 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.get('/login', function (req, res, next) {
+router.get('/login', csrfProtection, (req, res, next)=> {
   res.render('login', { title: 'Log In', token: req.csrfToken() });
 });
 
-router.post('/login', csrfProtection, validateExistingUser, asyncHandler(async (req, res) => {
+router.post('/login', csrfProtection, asyncHandler(async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({
     where: { username },
   });
   if (user !== null) {
     const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
-  };
-  if (passwordMatch) {
-    loginUser(req, res, user) 
-    return res.redirect('/app')
+    if (passwordMatch) {
+      loginUser(req, res, user) 
+      return res.redirect('/app')
+    }
   }
+  
 }))
 
-router.get('/signup', function (req, res, next) {
-  res.render('signup', { title: 'a/A Express Skeleton Home', token: req.csrfToken() });
+router.get('/signup', csrfProtection,  (req, res, next)=> {
+  res.render('sign-up', { title: 'Sign Up', token: req.csrfToken() });
 });
 // localhost:8080/users/signup
-router.post('/signup', validateNewUser, handleValidationErrors, csrfProtection, asyncHandler(async (req, res) => {
+router.post('/signup', validateNewUser, csrfProtection, asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
