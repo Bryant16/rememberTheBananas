@@ -3,9 +3,13 @@ extends layout
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
+  link(rel="stylesheet" href="/stylesheets/logo.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1= title
-  p Welcome to your Project Skeleton
+    body
+      div.logo
+          p Remember the bananas
+          img(src="/images/chimp.png")
+      div 
