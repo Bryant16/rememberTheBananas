@@ -2,7 +2,7 @@ const express = require('express');
 const { check, validationResult } = require('express-validator');
 const db = require('../db/models');
 const { List, Task } = db;
-const { csrfProtection, asyncHandler } = require('./utils');
+const { csrfProtection, asyncHandler } = require('../utils');
 const { requireAuth } = require('../auth');
 
 const router = express.Router();
@@ -22,13 +22,13 @@ const listValidators = [
 router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
     const list = await List.findByPk(1);
     if(list){
-        res.json({list})
+        res.render('app', { list })
     }else{
         next(listNotFoundError(1))
     }
 }));
 
-routger.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
+router.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
     const id = parseInt(req.params.id, 10);
     const list = await List.findByPk(id);
     if(list){
@@ -38,10 +38,12 @@ routger.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
     }
 }));
 
+
+
 // /*
 // //router.get('/', )
 
-// /list/1, get 
+// /list/1, get
 
 
 // /list/:id get, post
@@ -51,9 +53,11 @@ routger.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
 
 // edit task, /list/edit/:id
 
-// /search/(regex for key words) post 
+// /search/(regex for key words) post
 
 
 
 // router.get('/list/:id(//d+)')
 // /*
+
+module.exports = router;

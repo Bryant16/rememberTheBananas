@@ -20,12 +20,13 @@ html
             p.message Been Here Before? Welcome back!
             form(action="/users/login" method="post")
                 input(name="_csrf" value=token type="hidden")
-                if errors
-                    div.alert
-                        p The following errors occured:
-                        ul
-                            each error in errors
-                                li=error
+                div.errors
+                    if errors
+                        div.alert
+                            p The following errors occured:
+                            ul
+                                each error in errors
+                                    li=error
                 div.login_container
                     div
                         input.label(name="username" type="text" placeholder="Username" value=username required)
