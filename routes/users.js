@@ -93,7 +93,7 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, 
       csrfToken: req.csrfToken(),
     })
   }
-
+  
 }))
 
 router.get('/signup', csrfProtection,  (req, res, next)=> {
