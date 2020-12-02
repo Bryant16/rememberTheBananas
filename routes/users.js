@@ -65,7 +65,7 @@ router.get('/login', csrfProtection, (req, res, next)=> {
   res.render('login', { title: 'Log In', token: req.csrfToken() });
 });
 
-router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, res) => {
+router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, res) => {
   let errors = [];
   const validatorErrors = validationResult(req);
   if (validatorErrors.isEmpty()) {
