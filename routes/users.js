@@ -51,7 +51,7 @@ router.post('/login', csrfProtection, validateExistingUser, asyncHandler(async (
     const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
   };
   if (passwordMatch) {
-    loginUser(req, res, user) // CREATE loginUser FUNCTION
+    loginUser(req, res, user) 
     return res.redirect('/app')
   }
 }))
