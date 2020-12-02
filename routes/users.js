@@ -6,32 +6,46 @@ const { asyncHandler, handleValidationErrors, csrfProtection} = require("../util
 const db = require('../db/models');
 const { User } = db;
 const { loginUser, logoutUser } = require('../auth');
-
-const validateExistingUser = [
-  check("username")
-    .exists({ checkFalsy: true })
-    .withMessage("Please enter a username"),
-  check("email")
-    .exists({ checkFalsy: true })
-    .isEmail()
-    .withMessage("Please enter a valid email address"),
-  check("password")
-    .exists({ checkFalsy: true })
-    .withMessage("Please enter a password"),
-];
+const { validationResult } = require("express-validator");
 
 const validateNewUser = [
   check("username")
     .exists({ checkFalsy: true })
     .withMessage("Please enter a username"),
-  check("email")
+  check('email')
     .exists({ checkFalsy: true })
+    .withMessage('Please provide a value for Email Address')
+    .isLength({ max: 255 })
+    .withMessage('Email Address must not be more than 255 characters long')
     .isEmail()
-    .withMessage("Please enter a valid email address"),
-  check("password")
+    .withMessage('Email Address is not a valid email')
+    .custom((value) => {
+      return User.findOne({ where: { email: value } }).then((user) => {
+        if (user) {
+          return Promise.reject('The provided Email Address is already in use by another account');
+        }
+      });
+    }),
+  check('password')
     .exists({ checkFalsy: true })
-    .withMessage("Please enter a password"),
-  // TODO: Check confirm password field
+    .withMessage('Please provide a value for Password')
+    .isLength({ max: 50 })
+    .withMessage('Password must not be more than 50 characters long')
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g')
+    .withMessage(
+      'Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*")'
+    ),
+  check('confirmPassword')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a value for Confirm Password')
+    .isLength({ max: 50 })
+    .withMessage('Confirm Password must not be more than 50 characters long')
+    .custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error('Confirm Password does not match Password');
+      }
+      return true;
+    }),
 ]
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -50,11 +64,11 @@ router.post('/login', csrfProtection, asyncHandler(async (req, res) => {
   if (user !== null) {
     const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
     if (passwordMatch) {
-      loginUser(req, res, user) 
+      loginUser(req, res, user)
       return res.redirect('/app')
     }
   }
-  
+
 }))
 
 router.get('/signup', csrfProtection,  (req, res, next)=> {
@@ -62,19 +76,26 @@ router.get('/signup', csrfProtection,  (req, res, next)=> {
 });
 // localhost:8080/users/signup
 router.post('/signup', validateNewUser, csrfProtection, asyncHandler(async (req, res) => {
-  const { username, email, password } = req.body;
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
-  const user = await User.create({ username, email, hashedPassword, salt });
+  const validatorErrors = validationResult(req);
+
+  if (validatorErrors.isEmpty()) {
+    const { username, email, password } = req.body;
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const user = await User.create({ username, email, hashedPassword, salt });
+    return res.json({
+      user:
+      {
+        username,
+        email,
+        password
+      }
+    })
+    // res.redirect('/app');
+  }
+
 
   loginUser(req, res, user);
-  return res.json({
-    user:
-    {
-      username,
-      email,
-      password
-  }})
 }))
 
 module.exports = router;

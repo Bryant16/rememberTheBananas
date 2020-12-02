@@ -6,8 +6,10 @@ form(action="/users/signup" method="post")
                 div
                     input.label(name="username" type="text" placeholder="Username" value=username)
                 div
-                    input.label(name="password" type="text" placeholder="Password" value=password)
-                div
                     input.label(name="email" type="email" placeholder="email" value=password)
+                div
+                    input.label(name="password" type="password" placeholder="Password" value=password)
+                div
+                    input.label(name="confirmPassword" type="password" placeholder="Confirm Password" value=password)
                 div
                     button.label(type="submit") Submit
