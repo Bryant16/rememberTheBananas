@@ -8,7 +8,7 @@ html(lang="en")
         title Remember the Bananas
     body
         header
-            div.masthead 
+            div.masthead
                 div.burger
                     i(id="bars" class="fas fa-bars" href="#")
                 div.searchbar
@@ -19,7 +19,7 @@ html(lang="en")
                 div.logout
                     button.logoutbutton() logout
         main
-            div(class="container") 
+            div(class="container")
                 div.main(id="sidebar")
                     div(id="imagediv")
                         span Remember the Bananas
@@ -29,9 +29,11 @@ html(lang="en")
                         li list
                         li something
                 div.main(id='taskfield')
-                    form(method="post" action="/tasks/add")
-                        input(class="inputBar" type="text")
+                    form.form
+                        input(class="inputBar" type="text" name="task")
                         button.submit(type='submit') add task
+                        ul.tasks
                 div.main(id="random")
                     ul
                         li stuff
+        script(src="/javascripts/index.js" type="module")

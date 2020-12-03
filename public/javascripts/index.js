@@ -1,25 +1,20 @@
-const listContainer = document.querySelector(".list-container");
+  const taskContainer = document.querySelector(".tasks");
+  const addTask = document.querySelector(".submit");
+  const form = document.querySelector(".form");
 
-window.addEventListener("click", async (event)=>{
-    try {
-        const res = await fetch('api/task', { });
-        const { list } = await res.json();
-        const listHtml = list.map(
-          ({ name, id }) => `
-          <div class="card" id="listt-${id}">
-            <div class="card-body">
-              <p class="card-text">${name}</p>
-              <button id="${id}" class="delete-button btn btn-secondary">
-                Delete
-              </button>
-            </div>
-          </div>
-        `
-        );
+  addTask.addEventListener("click", async (event)=>{
+    event.preventDefault();
+    const formData = new FormData(form);
+    const value = formData.get("task")
 
-        listContainer.innerHTML = listHtml.join("");
+      try {
+          const res = await fetch('app/tasks', { method:"POST", headers:{"Content-Type": "application/json"}, body: JSON.stringify({ task: value }) });
+          const { task } = await res.json();
+          const singleTask = document.createElement('li');
+          singleTask.innerHTML = task.name;
+          taskContainer.appendChild(singleTask);
 
-    } catch (e) {
-        console.log(e)
-    }
-})
+      } catch (e) {
+          console.log(e)
+      }
+  })

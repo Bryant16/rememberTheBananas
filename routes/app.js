@@ -29,6 +29,13 @@ router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
     // }
 }));
 
+router.post('/tasks', asyncHandler(async (req,res, next) => {
+  console.log('BODY:', req.body)
+  const task = await Task.create({ name:req.body.task });
+  console.log('task: ', task)
+  res.json({ task });
+}))
+
 router.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
     const id = parseInt(req.params.id, 10);
     const list = await List.findByPk(id);
