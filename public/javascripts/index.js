@@ -7,14 +7,13 @@
     const formData = new FormData(form);
     const value = formData.get("task")
 
-      try {
-          const res = await fetch('app/tasks', { method:"POST", headers:{"Content-Type": "application/json"}, body: JSON.stringify({ task: value }) });
-          const { task } = await res.json();
-          const singleTask = document.createElement('li');
-          singleTask.innerHTML = task.name;
-          taskContainer.appendChild(singleTask);
-
-      } catch (e) {
-          console.log(e)
-      }
+    try {
+        const res = await fetch('app/tasks', { method:"POST", headers:{"Content-Type": "application/json"}, body: JSON.stringify({ task: value }) });
+        const { task } = await res.json();
+        const singleTask = document.createElement('li');
+        singleTask.innerHTML = task.name;
+        taskContainer.appendChild(singleTask);
+    } catch (e) {
+        console.log(e)
+    }
   })

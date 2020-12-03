@@ -5,6 +5,7 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel='stylesheet' href="https://use.fontawesome.com/releases/v5.0.12/css/all.css")
         link(rel='stylesheet' href='/stylesheets/app.css')
+        link(rel='stylesheet' href='/stylesheets/listModal.css')
         title Remember the Bananas
     body
         header
@@ -25,6 +26,16 @@ html(lang="en")
                         span Remember the Bananas
                         img(class="imagesidebar" src="/images/chimp.png")
                     ul.lists
+                        form.formList
+                        button.add(type="submit") add list
+                        div#myModal.modal
+                            div.modal-content
+                                span.close &times
+                                p Add Your List..
+                                input(class="textBar" type="text" name="list")
+                                button(type="submit") Add New List
+                            div
+                        div
                         li something
                         li list
                         li something
@@ -37,3 +48,4 @@ html(lang="en")
                     ul
                         li stuff
         script(src="/javascripts/index.js" type="module")
+        script(src="/javascripts/list.js" type="module")
