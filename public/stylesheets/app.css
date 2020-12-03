@@ -1,4 +1,4 @@
-.navBar {
+/* .navBar {
     background-color: aqua;
     
     width: 100%;
@@ -24,4 +24,157 @@
     width: 90%;
     position: relative;
     min-height: 100vh;
+} */
+/* * {
+    box-sizing: border-box;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: green;
+    color: white;
+}
+
+.logo {
+    font-size: 1.5em;
+    margin: .5em;
+}
+
+.navbarlinks ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbarlinks li {
+    list-style: none;
+}
+
+.navbarlinks li a {
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+    display: block;
+}
+
+.navbarlinks li:hover {
+    background-color: lightgreen;
+}
+
+.toggle-button {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+} */
+.masthead {
+    display: grid;
+    grid-template-columns: 1fr 3fr 2fr 1fr;
+    grid-template-rows: auto;
+    background-color: green;
+    height: 45px;
+    position: relative;
+}
+
+.burger {   
+    top: .75rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+}
+
+.burger .bar {
+    height: 2px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+} 
+
+#bars {
+    font-size: 11px;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    display: flex;
+}
+#bars:hover {
+    background-color: darkgreen;
+}
+#search,
+#textBar {
+    font-size: 11px;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-top: 7px;
+    display: inline-block;
+}
+.logout {
+    display: flex;
+    justify-content: flex-end;
+  
+}
+.logoutbutton {
+    background-color: green;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    font-size: 11px;
+    padding-top: 7px ;
+    padding-bottom: 7px ;
+    padding-right:  9px;
+    padding-left: 9px ;
+    margin-right: 4px;
+    margin-left: 4px;
+    text-transform: uppercase;
+    
+}
+.hello  {
+    display: inline-flex;
+    position: relative;
+    justify-content: space-between;
+}
+
+.hello a {
+    position: absolute;
+    align-self: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    color: white;
+    font-size: 12px;
+}
+.logoutbutton:hover {
+    background-color: lime;
+}
+
+input[type=text] {
+    width: 300px;
+}
+
+
+
+

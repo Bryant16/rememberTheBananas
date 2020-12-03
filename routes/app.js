@@ -1,7 +1,7 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
 const db = require('../db/models');
-const { List, Task } = db;
+const { List, Task, User } = db;
 const { csrfProtection, asyncHandler } = require('../utils');
 const { requireAuth } = require('../auth');
 
@@ -21,7 +21,8 @@ const listValidators = [
   };
 router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
     //const list = await List.findByPk(1);
-    res.render('app')
+    const user = await User.findByPk(1)
+    res.render('app', {user})
     // if(list){
     // }else{
     //     next(listNotFoundError(1))
