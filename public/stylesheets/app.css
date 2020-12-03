@@ -226,9 +226,13 @@ input[type=text] {
     position: absolute;
     padding-bottom: 10px;
 }
-
+#imagediv {
+    padding-top: 10px;
+}
 span {
     vertical-align: end;
+    color: yellow;
+    font-family: fantasy;
     
 }
 
