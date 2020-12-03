@@ -1,6 +1,6 @@
 /* .navBar {
     background-color: aqua;
-    
+
     width: 100%;
 }
 
@@ -18,7 +18,7 @@
     min-height: 100vh;
 }
 
-.tasks {
+/* .tasks {
     margin-left: 0;
     background-color: crimson;
     width: 90%;
@@ -94,7 +94,7 @@ body {
     position: relative;
 }
 
-.burger {   
+.burger {
     top: .75rem;
     right: 1rem;
     display: flex;
@@ -110,7 +110,7 @@ body {
     width: 100%;
     background-color: white;
     border-radius: 10px;
-} 
+}
 
 #bars {
     font-size: 11px;
@@ -136,7 +136,7 @@ body {
 .logout {
     display: flex;
     justify-content: flex-end;
-  
+
 }
 .logoutbutton {
     background-color: green;
@@ -151,7 +151,17 @@ body {
     margin-right: 4px;
     margin-left: 4px;
     text-transform: uppercase;
-    
+
+}
+
+.tasks li {
+    position: relative;
+    list-style-type: none;
+}
+
+.tasks input {
+    position: absolute;
+    left: -30px;
 }
 .hello  {
     display: inline-flex;
@@ -182,13 +192,13 @@ input[type=text] {
    grid-template-columns: 150px 400px 300px;
    padding-top: 10px;
    justify-content: space-between;
-   
+
 }
 
 .main {
     padding-top: 10px;
     padding-left: 5px;
-    
+
 }
 
 #sidebar {
@@ -233,7 +243,7 @@ span {
     vertical-align: end;
     color: yellow;
     font-family: fantasy;
-    
+
 }
 
 .lists {
