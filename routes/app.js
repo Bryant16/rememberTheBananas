@@ -19,11 +19,14 @@ const listValidators = [
     err.status = 404;
     return err;
   };
+
 router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
     //const list = await List.findByPk(1);
     const user = await User.findByPk(1)
     //const tasks = await Task.findAll(where: {listId: })
-    res.render('app', {user})
+    const allLists = await List.findAll()
+    //console.log(allLists)
+    res.render('app', {user, allLists})
     // if(list){
     // }else{
     //     next(listNotFoundError(1))
@@ -31,8 +34,20 @@ router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
 }));
 //router.delete ('/tasks/:id',())
 router.post('/tasks', asyncHandler(async (req,res, next) => {
-  const task = await Task.create({ name:req.body.task });
-  res.json({ task });
+  // req.body
+    // task = name of task
+    // listId = id of the list you want the task to go into
+    const id = parseInt(req.body.listId)
+  const list = await List.findByPk(id, {
+    include: [Task]
+  });
+
+  const theNewTask = await list.addTask({
+    name: req.body.task
+  });
+// list: list,, message: "Hi bryant and nichole"
+  res.json({ task: theNewTask});
+
 }))
 
 // router.post('/tasks', asyncHandler(async (req,res, next) => {
@@ -49,8 +64,14 @@ router.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
         next(listNotFoundError(id))
     }
 }));
-
-
+ // const user = await User.findByPK({})
+    // const list = await List.create({})
+router.post('/lists', asyncHandler(async(req, res)=>{
+    const id = parseInt(req.session.auth.userId, 10)
+    const list = await List.create({name:req.body.list, userId:id })
+   
+    res.redirect('/app')
+}));
 
 // /*
 // //router.get('/', )

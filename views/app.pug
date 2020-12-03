@@ -32,8 +32,9 @@ html(lang="en")
                             div.modal-content
                                 span.close &times
                                 p Add Your List..
-                                input(class="textBar" type="text" name="list")
-                                button.confirmAdd(type="submit") Add New List
+                                form(method="post" action="/app/lists")
+                                    input(class="textBar" type="text" name="list")
+                                    button.confirmAdd(type="submit") Add New List
                             div
                         div
                         li something
@@ -42,10 +43,14 @@ html(lang="en")
                 div.main(id='taskfield')
                     form.form
                         input(class="inputBar" type="text" name="task")
+                        div
+                            select 
+                                each list in allLists
+                                    option(value=list.id) #{list.name}
                         button.submit(type='submit') add task
                         ul.tasks
                 div.main(id="random")
                     ul
-                        li stuff
+                        li list.name
         script(src="/javascripts/index.js" type="module")
         script(src="/javascripts/list.js" type="module")

@@ -6,9 +6,13 @@
     event.preventDefault();
     const formData = new FormData(form);
     const value = formData.get("task")
+    //const id = formData.get("listId")
+    const id = formData.getAll()
+    console.log(id)
+    //console.log(formData)
 
     try {
-        const res = await fetch('app/tasks', { method:"POST", headers:{"Content-Type": "application/json"}, body: JSON.stringify({ task: value }) });
+        const res = await fetch('app/tasks', { method:"POST", headers:{"Content-Type": "application/json"}, body: JSON.stringify({ task: value, listId: id }) });
         const { task } = await res.json();
         const singleTask = document.createElement('li');
         singleTask.innerHTML = task.name;
