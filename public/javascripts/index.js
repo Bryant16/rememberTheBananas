@@ -18,3 +18,9 @@
           console.log(e)
       }
   })
+
+  //setAttribute
+  //li unique class name
+  //css functionality
+  //add event listeners for delete and edit
+  //checked attribute
