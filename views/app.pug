@@ -1,12 +1,23 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Document
-    body
-
-        h2 Your Lists
-            p #{list.name}
-        .list-container
-        script(type="module" src="javascripts/index.js")
+doctype html
+html
+  head
+      block head
+        title="Express Starter App"
+        link(rel='stylesheet' href='/stylesheets/app.css')
+  body
+        div.navBar 
+            input.search(name="searchBar" placeholder="Search Bar")
+        div.container
+            div.sideBar
+                p This is the sidebar
+                div.logo
+            div.tasks
+                form(action="/app/tasks" method="post")
+                input(name="_csrf" value=token type="hidden")
+                div.login-container
+                    div
+                        label 
+                        input.label(name="username"  placeholder="tasks" )
+                        button.label(type="submit") Add Task
+                    div
+                        

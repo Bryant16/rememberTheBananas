@@ -1,0 +1,27 @@
+.navBar {
+    background-color: aqua;
+    
+    width: 100%;
+}
+
+.container {
+    background-color: blueviolet;
+    min-height: 100vh;
+    display:flex;
+    position: relative;
+}
+.sideBar {
+    background-color: chartreuse;
+    position: relative;
+    width: 10%;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
+.tasks {
+    margin-left: 0;
+    background-color: crimson;
+    width: 90%;
+    position: relative;
+    min-height: 100vh;
+}

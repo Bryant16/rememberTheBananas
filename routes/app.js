@@ -20,12 +20,12 @@ const listValidators = [
     return err;
   };
 router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
-    const list = await List.findByPk(1);
-    if(list){
-        res.render('app', { list })
-    }else{
-        next(listNotFoundError(1))
-    }
+    //const list = await List.findByPk(1);
+    res.render('app')
+    // if(list){
+    // }else{
+    //     next(listNotFoundError(1))
+    // }
 }));
 
 router.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
