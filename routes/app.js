@@ -22,13 +22,14 @@ const listValidators = [
 router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
     //const list = await List.findByPk(1);
     const user = await User.findByPk(1)
+    //const tasks = await Task.findAll(where: {listId: })
     res.render('app', {user})
     // if(list){
     // }else{
     //     next(listNotFoundError(1))
     // }
 }));
-
+//router.delete ('/tasks/:id',())
 router.post('/tasks', asyncHandler(async (req,res, next) => {
   const task = await Task.create({ name:req.body.task });
   res.json({ task });
