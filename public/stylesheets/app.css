@@ -175,6 +175,63 @@ input[type=text] {
     width: 300px;
 }
 
+.container {
+   display: grid;
+   background-color: green;
+   height: 600px;
+   grid-template-columns: 150px 400px 300px;
+   padding-top: 10px;
+   justify-content: space-between;
+   
+}
 
+.main {
+    padding-top: 10px;
+    padding-left: 5px;
+    
+}
 
+#sidebar {
+    background-color: lightgreen;
+    border-radius: 10px;
+    position: relative;
+}
 
+#taskfield {
+    background-color: lightgreen;
+    border-radius: 20px;
+}
+
+#random {
+    background-color: lightgreen;
+    border-radius: 5px;
+}
+
+.submit {
+    background-color: green;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    font-size: 11px;
+}
+
+.inputBar {
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+.imagesidebar {
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    padding-bottom: 10px;
+}
+
+span {
+    vertical-align: end;
+    
+}
+
+.lists {
+    padding-top: 70px;
+}
