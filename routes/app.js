@@ -34,6 +34,11 @@ router.post('/tasks', asyncHandler(async (req,res, next) => {
   res.json({ task });
 }))
 
+// router.post('/tasks', asyncHandler(async (req,res, next) => {
+//   const list = await List.create({ name:req.body.list });
+//   res.json({ list });
+// }))
+
 router.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
     const id = parseInt(req.params.id, 10);
     const list = await List.findByPk(id);
