@@ -29,9 +29,12 @@ html(lang="en")
                         li list
                         li something
                 div.main(id='taskfield')
+                    div.toolbar-flex-container
+                        div.toolbar
+                            input(type="checkbox")
                     form.form
-                        input(class="inputBar" type="text" name="task")
-                        button.submit(type='submit') add task
+                        input(class="inputBar" type="text" name="task" placeholder="Add a task...")
+                        button.submit(type='submit') Add Task
                         ul.tasks
                 div.main(id="random")
                     ul

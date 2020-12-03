@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 /* .navBar {
     background-color: aqua;
 
@@ -163,6 +167,10 @@ body {
     position: absolute;
     left: -30px;
 }
+
+.tasks input:hover {
+    cursor: pointer;
+}
 .hello  {
     display: inline-flex;
     position: relative;
@@ -248,4 +256,23 @@ span {
 
 .lists {
     padding-top: 70px;
+}
+
+/* Toolbar Styles */
+
+.toolbar-flex-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    margin-bottom: 10%;
+    height: 25px;
+    background-color: lightgray;
+    width: 90%;
 }
