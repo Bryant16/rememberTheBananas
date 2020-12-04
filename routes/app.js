@@ -35,22 +35,34 @@ router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
 //router.delete ('/tasks/:id',())
 router.post('/tasks', asyncHandler(async (req,res, next) => {
   // req.body
-    // task = name of task
-    // listId = id of the list you want the task to go into
-    const id = parseInt(req.body.listId)
+  // task = name of task
+  // listId = id of the list you want the task to go into
+  const id = parseInt(req.body.listId)
 //   const list = await List.findByPk(id, {
 //     include: [Task]
 //   });
-const list = await List.findByPk(id, {
-    include: [Task]
-  });
+  //   const list = await ListandTask.findByPk(id, {
+    //   where: {
+      //     taskId: req.body.task
+  //   }
+  // });
   //console.log(req.body.task)
-  const theNewTask = await list.addTask({
-    name: req.body.task
-  });
-  const joinedTask = await ListandTask.create({taskId: , listId: })
-// list: list,, message: "Hi bryant and nichole"
-  res.json({ task: theNewTask});
+  //   const theNewTask = await list.addTask({
+    //   name: req.body.task
+    // });
+    // const joinedTask = await ListandTask.create({taskId: task.id })
+    // list: list,, message: "Hi bryant and nichole"
+
+    const task = await Task.create({ name: req.body.task})
+    // const lists = await List.findAll();
+    const users = await User.findByPk( 1, {
+      include: [List]
+    });
+
+    console.log('users', users)
+
+    // console.log('lists', lists)
+    res.json({ task, users });
 
 
 }))
@@ -74,7 +86,7 @@ router.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
 router.post('/lists', asyncHandler(async(req, res)=>{
     const id = parseInt(req.session.auth.userId, 10)
     const list = await List.create({name:req.body.list, userId:id })
-   
+
     res.redirect('/app')
 }));
 

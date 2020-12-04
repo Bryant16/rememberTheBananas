@@ -44,9 +44,12 @@ html(lang="en")
                     form.form
                         input(class="inputBar" type="text" name="task")
                         div
-                            select 
-                                each list in allLists
-                                    option(value=list.id) #{list.name}
+                            select.dropdown
+                                if !lists
+                                    option(value="default") Home
+                                else
+                                    each user in users
+                                        option(value="user.List.name") #{user.List.name}
                         button.submit(type='submit') add task
                         ul.tasks
                 div.main(id="random")
