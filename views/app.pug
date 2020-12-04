@@ -33,14 +33,17 @@ html(lang="en")
                                 span.close &times
                                 p Add Your List..
                                 form(method="post" action="/app/lists")
+
                                     input(class="textBar" type="text" name="list")
                                     button.confirmAdd(type="submit") Add New List
                             div
                         div
                             each list in allLists
                                 a(href=`/app/${list.id}`)= list.name
+                                br
                 div.main(id='taskfield')
                     form.form
+                        input(type="hidden" value=list.id name="listId")
                         input(class="inputBar" type="text" name="task")
                         div
                             select.dropdown

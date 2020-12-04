@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const { check } = require("express-validator");
 const { asyncHandler, handleValidationErrors, csrfProtection} = require("../utils");
 const db = require('../db/models');
-const { User } = db;
+const { User, List } = db;
 const { loginUser, logoutUser } = require('../auth');
 const { validationResult } = require("express-validator");
 
@@ -108,8 +108,10 @@ router.post('/signup', validateNewUser, csrfProtection, asyncHandler(async (req,
     const { username, email, password } = req.body;
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-    const user = await User.create({ username, email, hashedPassword, salt });
-    loginUser(req, res, user);
+    const newUser = await User.create({ username, email, hashedPassword, salt });
+    const id = newUser.id;
+    const list = await List.create({ name: 'Personal', userId: id });
+    loginUser(req, res, newUser);
     return res.redirect('/app');
     // return res.json({
     //   user:

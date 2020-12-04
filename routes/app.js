@@ -21,39 +21,32 @@ const listValidators = [
   };
 
 router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
-    //const list = await List.findByPk(1);
-    const user = await User.findByPk(1)
-    //const tasks = await Task.findAll(where: {listId: })
+  const id = parseInt(req.session.auth.userId, 10);
+  const user = await User.findByPk(id);
     const allLists = await List.findAll()
-    const tasks = await List.findByPk(1, {
+    const tasks = await List.findByPk(id, {
       include: [Task]
     })
-    console.log(tasks)
-    console.log(allLists)
     res.render('app', {user, allLists, tasks })
-    // res.json({ tasks })
-    // if(list){
-    // }else{
-    //     next(listNotFoundError(1))
-    // }
 }));
 
 router.get('/:id', asyncHandler(async(req, res, next) => {
   const id = parseInt(req.params.id)
   const list = await List.findByPk(id, {
-    // include: [ListandTask]
+    include: [Task]
   })
   const allLists = await List.findAll();
+  console.log(list);
   res.render('app', { list, allLists })
 }))
 //router.delete ('/tasks/:id',())
 router.post('/tasks', asyncHandler(async (req,res, next) => {
-
-  const list = await List.findByPk(1, {
+  const id = parseInt(req.body.listId);
+  const list = await List.findByPk(id, {
     include: [Task]
   });
   const newTask = await Task.create({ name: req.body.task});
-  const joined = await ListandTask.create({ listId: 1 , taskId: newTask.id})
+  const joined = await ListandTask.create({ listId: id , taskId: newTask.id})
 
     res.json({ newTask });
 }))
@@ -75,10 +68,10 @@ router.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
  // const user = await User.findByPK({})
     // const list = await List.create({})
 router.post('/lists', asyncHandler(async(req, res)=>{
-    const id = parseInt(req.session.auth.userId, 10)
-    const list = await List.create({name:req.body.list, userId:id })
-
-    res.redirect('/app')
+  const id = parseInt(req.session.auth.userId, 10);
+  const list = await List.create({ name: req.body.list, userId: id });
+  const allLists = await List.findAll();
+  res.render('app', { allLists, list });
 }));
 
 // /*
