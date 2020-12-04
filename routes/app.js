@@ -1,7 +1,7 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
 const db = require('../db/models');
-const { List, Task, User } = db;
+const { List, Task, User, ListandTask } = db;
 const { csrfProtection, asyncHandler } = require('../utils');
 const { requireAuth } = require('../auth');
 
@@ -38,15 +38,20 @@ router.post('/tasks', asyncHandler(async (req,res, next) => {
     // task = name of task
     // listId = id of the list you want the task to go into
     const id = parseInt(req.body.listId)
-  const list = await List.findByPk(id, {
+//   const list = await List.findByPk(id, {
+//     include: [Task]
+//   });
+const list = await List.findByPk(id, {
     include: [Task]
   });
-
+  //console.log(req.body.task)
   const theNewTask = await list.addTask({
     name: req.body.task
   });
+  const joinedTask = await ListandTask.create({taskId: , listId: })
 // list: list,, message: "Hi bryant and nichole"
   res.json({ task: theNewTask});
+
 
 }))
 
