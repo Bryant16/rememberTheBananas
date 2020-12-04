@@ -48,42 +48,14 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
 }))
 //router.delete ('/tasks/:id',())
 router.post('/tasks', asyncHandler(async (req,res, next) => {
-  // req.body
-  // task = name of task
-  // listId = id of the list you want the task to go into
-  const id = parseInt(req.body.listId)
-//   const list = await List.findByPk(id, {
-//     include: [Task]
-//   });
-  //   const list = await ListandTask.findByPk(id, {
-    //   where: {
-      //     taskId: req.body.task
-  //   }
-  // });
-  //console.log(req.body.task)
-  //   const theNewTask = await list.addTask({
-    //   name: req.body.task
-    // });
-    // const joinedTask = await ListandTask.create({taskId: task.id })
-    // list: list,, message: "Hi bryant and nichole"
 
-    const task = await Task.create({ name: req.body.task})
-    // const lists = await List.findAll();
-    const users = await User.findByPk( 1, {
-      include: [List]
-    });
+  const list = await List.findByPk(1, {
+    include: [Task]
+  });
+  const newTask = await Task.create({ name: req.body.task});
+  const joined = await ListandTask.create({ listId: 1 , taskId: newTask.id})
 
-    const listandtask = await ListandTask.findByPk(1);
-    console.log(listandtask)
-    // await ListandTask.create({ listId: users.List.listId, taskId: req.body.task})
-
-
-    console.log('users', users)
-
-    // console.log('lists', lists)
-    res.json({ task, users });
-
-
+    res.json({ newTask });
 }))
 
 // router.post('/tasks', asyncHandler(async (req,res, next) => {
