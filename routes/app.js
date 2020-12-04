@@ -23,21 +23,28 @@ const listValidators = [
 router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
   const id = parseInt(req.session.auth.userId, 10);
   const user = await User.findByPk(id);
-    const allLists = await List.findAll()
-    const tasks = await List.findByPk(id, {
-      include: [Task]
-    })
-    res.render('app', {user, allLists, tasks })
+  const allLists = await List.findAll({
+    where: {userId: id}
+  });
+  const list = await List.findByPk(1);
+  const allTasks = await List.findByPk(1, {
+    include: [Task]
+  })
+  //const tasks = allTasks.Task;
+    res.render('app', { list, user, allLists, allTasks })
 }));
 
 router.get('/:id', asyncHandler(async(req, res, next) => {
-  const id = parseInt(req.params.id)
+  const id = parseInt(req.params.id);
+  const user = parseInt(req.session.auth.userId, 10);
   const list = await List.findByPk(id, {
     include: [Task]
   })
-  const allLists = await List.findAll();
+  const allLists = await List.findAll({
+    where: { userId: user }
+  });
   console.log(list);
-  res.render('app', { list, allLists })
+  res.render('app', { list, allLists, allTasks: list });
 }))
 //router.delete ('/tasks/:id',())
 router.post('/tasks', asyncHandler(async (req,res, next) => {
@@ -74,24 +81,6 @@ router.post('/lists', asyncHandler(async(req, res)=>{
   res.render('app', { allLists, list });
 }));
 
-// /*
-// //router.get('/', )
-
-// /list/1, get
-
-
-// /list/:id get, post
-
-// add task
-//     event listener to add to the page
-
-// edit task, /list/edit/:id
-
-// /search/(regex for key words) post
-
-
-
-// router.get('/list/:id(//d+)')
-// /*
+router.post('/app/search', )
 
 module.exports = router;

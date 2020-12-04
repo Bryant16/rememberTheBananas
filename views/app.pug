@@ -54,8 +54,8 @@ html(lang="en")
                                         option(value="user.List.name") #{user.List.name}
                         button.submit(type='submit') add task
                         ul.tasks
-                            if tasks
-                                each task in tasks
+                            if allTasks
+                                each task in allTasks.Tasks
                                     li= task.name
                 div.main(id="random")
                     ul
