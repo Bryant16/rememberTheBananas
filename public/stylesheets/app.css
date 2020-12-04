@@ -239,3 +239,12 @@ span {
 .lists {
     padding-top: 70px;
 }
+
+.tasks li {
+    list-style-type: none;
+
+}
+
+.taskname {
+    width: fit-content;
+}

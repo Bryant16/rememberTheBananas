@@ -46,17 +46,11 @@ html(lang="en")
                         input(type="hidden" value=list.id name="listId")
                         input(class="inputBar" type="text" name="task")
                         div
-                            select.dropdown
-                                if !lists
-                                    option(value="default") Home
-                                else
-                                    each user in users
-                                        option(value="user.List.name") #{user.List.name}
                         button.submit(type='submit') add task
                         ul.tasks
                             if allTasks
                                 each task in allTasks.Tasks
-                                    li= task.name
+                                    <li><input type="checkbox">#{task.name}</li> 
                 div.main(id="random")
                     ul
                         if list

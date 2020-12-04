@@ -18,7 +18,7 @@
     try {
       // console.log(task)
       let singleTask = document.createElement('li');
-      singleTask.innerHTML = newTask.name;
+      singleTask.innerHTML = `<input type="checkbox">${newTask.name} `;
       taskContainer.appendChild(singleTask);
     } catch (e) {
         console.log(e)

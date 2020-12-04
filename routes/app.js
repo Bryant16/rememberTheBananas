@@ -77,8 +77,11 @@ router.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
 router.post('/lists', asyncHandler(async(req, res)=>{
   const id = parseInt(req.session.auth.userId, 10);
   const list = await List.create({ name: req.body.list, userId: id });
-  const allLists = await List.findAll();
-  res.render('app', { allLists, list });
+  const allLists = await List.findAll({
+    where:{userId: id}
+  });
+  
+  res.render('app', { allLists, list});
 }));
 
 router.post('/app/search', )
