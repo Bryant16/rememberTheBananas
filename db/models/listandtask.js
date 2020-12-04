@@ -1,7 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const ListandTask = sequelize.define('ListandTask', {
-    listId: DataTypes.INTEGER,
+    listId: {
+      type: DataTypes.INTEGER,},
     taskId: DataTypes.INTEGER
   }, {});
   ListandTask.associate = function(models) {

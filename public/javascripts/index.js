@@ -9,19 +9,19 @@
 
     const res = await fetch('/app/tasks', { method:"POST", headers:{"Content-Type": "application/json"}, body: JSON.stringify({ task: value }) });
     const { task, users } = await res.json();
-    console.log(`task ${task.name}`)
+    // console.log(`task ${task.name}`)
 
     users.Lists.forEach(list => {
       let option = document.createElement('option');
       option.innerHTML = list.name;
       dropdown.appendChild(option)
-      console.log(list.name)
+      // console.log(list.name)
     });
 
     addTask.addEventListener("click", async (event)=>{
       event.preventDefault();
       try {
-        console.log(task)
+        // console.log(task)
         let singleTask = document.createElement('li');
         singleTask.innerHTML = task.name;
         taskContainer.appendChild(singleTask);

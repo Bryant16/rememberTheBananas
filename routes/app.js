@@ -25,13 +25,27 @@ router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
     const user = await User.findByPk(1)
     //const tasks = await Task.findAll(where: {listId: })
     const allLists = await List.findAll()
-    //console.log(allLists)
-    res.render('app', {user, allLists})
+    const tasks = await List.findByPk(1, {
+      include: [Task]
+    })
+    console.log(tasks)
+    console.log(allLists)
+    res.render('app', {user, allLists, tasks })
+    // res.json({ tasks })
     // if(list){
     // }else{
     //     next(listNotFoundError(1))
     // }
 }));
+
+router.get('/:id', asyncHandler(async(req, res, next) => {
+  const id = parseInt(req.params.id)
+  const list = await List.findByPk(id, {
+    // include: [ListandTask]
+  })
+  const allLists = await List.findAll();
+  res.render('app', { list, allLists })
+}))
 //router.delete ('/tasks/:id',())
 router.post('/tasks', asyncHandler(async (req,res, next) => {
   // req.body
@@ -58,6 +72,11 @@ router.post('/tasks', asyncHandler(async (req,res, next) => {
     const users = await User.findByPk( 1, {
       include: [List]
     });
+
+    const listandtask = await ListandTask.findByPk(1);
+    console.log(listandtask)
+    // await ListandTask.create({ listId: users.List.listId, taskId: req.body.task})
+
 
     console.log('users', users)
 

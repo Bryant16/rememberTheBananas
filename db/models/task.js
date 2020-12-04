@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     const columnMapping = {
       through: 'ListandTasks',
       otherKey: 'listId',
-      foreignkey: 'taskId'
+      foreignKey: 'taskId',
     }
     Task.belongsToMany(models.List, columnMapping);
   };

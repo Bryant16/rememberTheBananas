@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     const columnMapping = {
       through: 'ListandTasks',
       otherKey: 'taskId',
-      foreignkey: 'listId'
+      foreignKey: 'listId'
     }
     List.belongsToMany(models.Task, columnMapping);
   };

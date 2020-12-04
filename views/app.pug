@@ -37,9 +37,8 @@ html(lang="en")
                                     button.confirmAdd(type="submit") Add New List
                             div
                         div
-                        li something
-                        li list
-                        li something
+                            each list in allLists
+                                a(href=`/app/${list.id}`)= list.name
                 div.main(id='taskfield')
                     form.form
                         input(class="inputBar" type="text" name="task")
@@ -52,8 +51,12 @@ html(lang="en")
                                         option(value="user.List.name") #{user.List.name}
                         button.submit(type='submit') add task
                         ul.tasks
+                            if tasks
+                                each task in tasks
+                                    li= task.name
                 div.main(id="random")
                     ul
-                        li list.name
+                        if list
+                            li= list.name
         script(src="/javascripts/index.js" type="module")
         script(src="/javascripts/list.js" type="module")
