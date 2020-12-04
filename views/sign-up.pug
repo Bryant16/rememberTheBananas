@@ -18,7 +18,7 @@ html
             p.quote Join millions of people getting more organized and productive!
     div.right
         div.login_button
-                button.login(type="submit") Log in
+                button.login(type="submit" onclick="window.location.href='/users/login'") Log in
         div.inputs
             p.message Sign up for free
             form(action="/users/signup" method="post")

@@ -15,7 +15,7 @@ html
             p.author - A.A. Milne, Winnie-the-Pooh
     div.right
         div.user_button
-            button.create_user(type="submit") Create User
+            button.create_user(type="submit" onclick="window.location.href='/users/signup'") Create User
         div.inputs
             p.message Been Here Before? Welcome back!
             form(action="/users/login" method="post")
