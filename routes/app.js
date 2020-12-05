@@ -83,29 +83,30 @@ router.post('/lists', asyncHandler(async(req, res)=>{
 }));
 
 router.post('/search', asyncHandler(async (req, res) => {
-  const value = req.body.searchValue;
+  const value = req.body.searchTerm;
   const id = parseInt(req.session.auth.userId, 10);
   const allLists = await List.findAll();
-  console.log(id)
+  console.log("ID", id)
+  let allTasks;
 
-  	const allTasks = await User.findByPk(id, {
-      include: [
-        {
-          model: List,
-          include: [
-            {
-              model: Task,
-              where: {
-                name: { [Op.substring]: `${value}` },
-                // [Op.iLike ]: "%value%" } }},
-              },
-            },
-          ],
-        },
-      ],
-    });
-  console.log("WHAT WE NEED", JSON.stringify(allTasks, null, 2))
-  res.render("app", { allTasks, allLists })
+  if(value) {
+    allTasks = await Task.findAll({
+      through: {
+        model: List,
+        where: { userId: id }
+      },
+      where: {
+        name: { [Op.iLike]: `%${value}%` } 
+      }
+    })
+
+    console.log("WHAT WE NEED", JSON.stringify(allTasks, null, 2))
+
+  } else {
+    allTasks = "";
+  }
+
+   res.json({ allTasks })
 }))
 
 

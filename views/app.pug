@@ -13,7 +13,8 @@ html(lang="en")
                 div.burger
                     i(id="bars" class="fas fa-bars" href="#")
                 div.searchbar
-                    form(method="post" action="/app/search" class="formSearch")
+                    //- form(method="post" action="/app/search" class="formSearch")
+                    form.search
                         button(id="search" class="fas fa-search" href="#" type="submit")
                         input(id="textBar" type="text" class="inputBar" name="searchValue")
                 div.hello
@@ -34,7 +35,6 @@ html(lang="en")
                                 span.close &times
                                 p Add Your List..
                                 form(method="post" action="/app/lists")
-
                                     input(class="textBar" type="text" name="list")
                                     button.confirmAdd(type="submit") Add New List
                             div

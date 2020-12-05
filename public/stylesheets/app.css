@@ -239,3 +239,10 @@ span {
 .lists {
     padding-top: 70px;
 }
+
+.searchError {
+    color: red;
+    font-size: 20px;
+    border: solid 2mm red;
+    list-style-type: none;
+}
