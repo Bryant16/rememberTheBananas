@@ -85,10 +85,8 @@ router.post('/lists', asyncHandler(async(req, res)=>{
 router.post('/search', asyncHandler(async (req, res) => {
   const value = req.body.searchValue;
   const id = parseInt(req.session.auth.userId, 10);
-  const allLists = await List.findAll();
-  console.log(id)
 
-  	const allTasks = await User.findByPk(id, {
+  	const tasks = await User.findByPk(id, {
       include: [
         {
           model: List,
@@ -104,8 +102,20 @@ router.post('/search', asyncHandler(async (req, res) => {
         },
       ],
     });
-  console.log("WHAT WE NEED", JSON.stringify(allTasks, null, 2))
-  res.render("app", { allTasks, allLists })
+
+    console.log('test: ',JSON.stringify(tasks.Lists[0].Tasks, null, 2))
+  // allTasks.Lists.Tasks.forEach(tasks => {
+  //   console.log(tasks);
+  // })
+
+  const allTasks = tasks.Lists[0].Tasks.map(task => {
+    console.log('task: ', task.name)
+  })
+
+
+  console.log("FINAL TASKS", JSON.stringify(allTasks, null, 2))
+  // console.log("WHAT WE NEED", JSON.stringify(tasks, null, 2))
+  res.render("search", { tasks })
 }))
 
 

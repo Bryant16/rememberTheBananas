@@ -36,7 +36,7 @@
     const searchValue = formData.get("searchValue");
     console.log(searchValue);
 
-    const res = await fetch("/app", {
+    const res = await fetch("/app/tasks", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ searchTerm: searchValue }),
