@@ -3,12 +3,39 @@ extends layout
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
-  link(rel="stylesheet" href="/stylesheets/logo.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
     body
-      div.logo
-          p Remember the bananas
-          img(src="/images/chimp.png")
+      head
+        div.navbar
+          div.logo
+            img(src="/images/chimp.png")
+            label(class="bananas") Remember the Bananas
+          div.links
+              a(href="#") Tour
+              a(href="#") What's New
+              a(href="#") Upgrade
+              a(href="#") Help
+              a(href="/users/login") Login
+              a(id="signup" href="/users/signup") Sign up for free
+
+      main
+        div.main-content
+          h1 The smart to-do app for busy people.
+          a(href="/users/signup").main-signup-button Sign Up Free
+            img(src="/images/thinking-man-dark-background.png")
+        section.main-content
+          h2 Get to-dos out of your head.
+          p Stop thinking about your to-dos, and let the app remember for you.
+    footer
+      div.footer-container
+          ul.footer-nav-heading Contributors
+            li:a(href="nichole's-github") Nichole O'Brien
+            li:a(href="sami's-github") Samantha Butler
+            li:a(href="bryant's-github") Bryant Klein
+            li:a(href="nick's-github") Nicholas Bierman
+      //- div.logo
+      //-     p Remember the bananas
+      //-     img(src="/images/chimp.png")
