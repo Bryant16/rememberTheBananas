@@ -58,11 +58,6 @@ router.post('/tasks', asyncHandler(async (req,res, next) => {
     res.json({ newTask });
 }))
 
-// router.post('/tasks', asyncHandler(async (req,res, next) => {
-//   const list = await List.create({ name:req.body.list });
-//   res.json({ list });
-// }))
-
 router.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
     const id = parseInt(req.params.id, 10);
     const list = await List.findByPk(id);
@@ -72,15 +67,32 @@ router.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
         next(listNotFoundError(id))
     }
 }));
- // const user = await User.findByPK({})
-    // const list = await List.create({})
+
+router.delete('/tasks', asyncHandler(async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const itemsToDelete = req.body.items;
+  await ListandTask.destroy({
+    where: {
+      taskId: itemsToDelete
+    }
+  })
+  const task = await Task.destroy({
+    where: {
+      id: itemsToDelete
+    }
+  })
+  if (task) {
+    res.json({ message: "success!" });
+  }
+}))
+
 router.post('/lists', asyncHandler(async(req, res)=>{
   const id = parseInt(req.session.auth.userId, 10);
   const list = await List.create({ name: req.body.list, userId: id });
   const allLists = await List.findAll({
     where:{userId: id}
   });
-  
+
   res.render('app', { allLists, list});
 }));
 

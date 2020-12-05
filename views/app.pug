@@ -47,10 +47,12 @@ html(lang="en")
                         input(class="inputBar" type="text" name="task")
                         div
                         button.submit(type='submit') add task
+                        div
+                            button.delete(type="submit") Delete
                         ul.tasks
                             if allTasks
                                 each task in allTasks.Tasks
-                                    <li><input type="checkbox">#{task.name}</li> 
+                                    <li class="taskLi"><input class="checkbox" type="checkbox" value=#{task.id}>#{task.name}</li>
                 div.main(id="random")
                     ul
                         if list
