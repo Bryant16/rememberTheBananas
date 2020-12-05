@@ -10,9 +10,7 @@ block content
     body
       head
         div.navbar
-          div.logo
-            img(src="/images/chimp.png")
-            label(class="bananas") Remember the Bananas
+          div.logo: <img src="/images/newLogo2.png">
           div.links
               a(href="#") Tour
               a(href="#") What's New
@@ -22,18 +20,41 @@ block content
               a(id="signup" href="/users/signup") Sign up for free
 
       main
-        div.main-content
-          h1 The smart to-do app for busy people.
-          a(href="/users/signup").main-signup-button Sign Up Free
-            img(src="/images/thinking-man-dark-background.png")
-        section.main-content
-          h2 Get to-dos out of your head.
-          p Stop thinking about your to-dos, and let the app remember for you.
-    footer
-      div.footer-container
+        div.mainContainer
+          div.heading
+            h1 The smart to-do app for busy people.
+          div.headingButton
+            form(action="/users/signup" method="get")
+              button(type="submit") Sign Up for Free
+          div.man
+              img(src="/images/thinking-man-dark-background.png")
+          div.quotes
+            h1 Get to-dos out of your head
+            h2 Stop thinking about your to-dos, 
+            h2 and let the app remember for you.
+        div.footer-container
+          img(src="/images/banana.png")
           ul.footer-nav-heading Contributors
-            li:a(href="nichole's-github") Nichole O'Brien
-            li:a(href="sami's-github") Samantha Butler
-            li:a(href="bryant's-github") Bryant Klein
-            li:a(href="nick's-github") Nicholas Bierman
+            li Nichole O'Brien
+            li Samantha Butler
+            li Bryant Klein
+            li Nicholas Bierman
+          ul.product Product
+            li Tour
+            li What's New
+            li Download Apps
+            li Integrations
+            li Upgrade
+          ul.community Community
+            li Forumns
+            li Tester Program
+            li Translations
+            li API
+          ul.support Support
+            li Help Center
+            li Get Started
+            li Tips and Tricks
+            li Status
+            li Contact Us
+
             
