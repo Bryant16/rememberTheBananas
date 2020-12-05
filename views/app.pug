@@ -13,8 +13,9 @@ html(lang="en")
                 div.burger
                     i(id="bars" class="fas fa-bars" href="#")
                 div.searchbar
-                    i(id="search" class="fas fa-search" href="#")
-                    input(id="textBar" type="text" class="inputBar")
+                    form(method="post" action="/app/search" class="formSearch")
+                        button(id="search" class="fas fa-search" href="#" type="submit")
+                        input(id="textBar" type="text" class="inputBar" name="searchValue")
                 div.hello
                     a Welcome to Remember the Bananas #{user.username}!
                 div.logout

@@ -2,14 +2,19 @@
   const addTask = document.querySelector(".submit");
   const form = document.querySelector(".form");
   const dropdown = document.querySelector(".dropdown");
+  const searchButton = document.querySelector(".fa-search");
+  const formSearch = document.querySelector(".formSearch");
+
+
  // const listId = document.querySelector()
   window.addEventListener("DOMContentLoaded", async () => {
     addTask.addEventListener("click", async (event)=>{
     event.preventDefault();
     const formData = new FormData(form);
-    const value = formData.get("task")
+    const value = formData.get("task");
       const listId = formData.get("listId");
-      console.log(listId);
+      const searchValue = formData.get("searchValue")
+      console.log(searchValue);
     const res = await fetch('/app/tasks', { method:"POST", headers:{"Content-Type": "application/json"}, body: JSON.stringify({ task: value, listId: listId }) });
     const { newTask } = await res.json();
     // console.log(`task ${task.name}`)
@@ -24,5 +29,18 @@
         console.log(e)
     }
   });
+
+  searchButton.addEventListener("click", async (event)=>{
+    const formData = new FormData(formSearch);
+
+    const searchValue = formData.get("searchValue");
+    console.log(searchValue);
+
+    const res = await fetch("/app", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ searchTerm: searchValue }),
+    });
+  })
 
   })

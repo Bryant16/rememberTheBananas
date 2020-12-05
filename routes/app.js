@@ -4,6 +4,7 @@ const db = require('../db/models');
 const { List, Task, User, ListandTask } = db;
 const { csrfProtection, asyncHandler } = require('../utils');
 const { requireAuth } = require('../auth');
+const { Op } = require("sequelize");
 
 const router = express.Router();
 
@@ -81,6 +82,32 @@ router.post('/lists', asyncHandler(async(req, res)=>{
   res.render('app', { allLists, list });
 }));
 
-router.post('/app/search', )
+router.post('/search', asyncHandler(async (req, res) => {
+  const value = req.body.searchValue;
+  const id = parseInt(req.session.auth.userId, 10);
+  const allLists = await List.findAll();
+  console.log(id)
 
+  	const allTasks = await User.findByPk(id, {
+      include: [
+        {
+          model: List,
+          include: [
+            {
+              model: Task,
+              where: {
+                name: { [Op.substring]: `${value}` },
+                // [Op.iLike ]: "%value%" } }},
+              },
+            },
+          ],
+        },
+      ],
+    });
+  console.log("WHAT WE NEED", JSON.stringify(allTasks, null, 2))
+  res.render("app", { allTasks, allLists })
+}))
+
+
+//check user session??
 module.exports = router;
