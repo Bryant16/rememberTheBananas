@@ -85,8 +85,6 @@ router.post('/lists', asyncHandler(async(req, res)=>{
 router.post('/search', asyncHandler(async (req, res) => {
   const value = req.body.searchTerm;
   const id = parseInt(req.session.auth.userId, 10);
-  const allLists = await List.findAll();
-  console.log("ID", id)
   let allTasks;
 
   if(value) {
@@ -100,11 +98,7 @@ router.post('/search', asyncHandler(async (req, res) => {
       }
     })
 
-    console.log("WHAT WE NEED", JSON.stringify(allTasks, null, 2))
-
-  } else {
-    allTasks = "";
-  }
+  } 
 
    res.json({ allTasks })
 }))

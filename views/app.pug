@@ -57,10 +57,15 @@ html(lang="en")
                         ul.tasks
                             if allTasks
                                 each task in allTasks.Tasks
-                                    li= task.name
+                                    li.taskListed= task.name
                 div.main(id="random")
-                    ul
+                    ul.current-list
                         if list
                             li= list.name
+                    .task-info
+                        div
+                            h3 Number of Tasks
+                                div#task-number
+                            
         script(src="/javascripts/index.js" type="module")
         script(src="/javascripts/list.js" type="module")
