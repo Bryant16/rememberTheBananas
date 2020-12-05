@@ -163,7 +163,7 @@ a:hover {
     align-items: center;
     justify-content: flex-end;
     padding-bottom: 15px;
-    min-height: 800px;
+    min-height: 875px;
 }
 
 .footer-container {
@@ -187,7 +187,7 @@ a:hover {
     padding-right: 12%;
 }
 .headingButton button {
-    background-color: lightpink;
+    background-color: rgb(145, 24, 50);
     width: 150px;
     height: 50px;
     border-radius: 6px;
@@ -225,5 +225,10 @@ a:hover {
     width: 50px;
     height: 50px;
     
+}
+
+.heading {
+    color: white;
+
 }
 /* @media () {} */
