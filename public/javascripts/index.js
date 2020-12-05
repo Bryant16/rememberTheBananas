@@ -37,10 +37,13 @@
       // console.log(task)
       let singleTask = document.createElement('li');
       singleTask.innerHTML = newTask.name;
+      singleTask.setAttribute("class", "taskListed");
       taskContainer.appendChild(singleTask);
     } catch (e) {
-        console.log(e)
+      console.log(e)
     }
+    numberOfTasks();
+    
   });
 
   searchButton.addEventListener("click", async (event)=>{
@@ -67,7 +70,7 @@
         parent.appendChild(child);
         numberOfTasks();
       })
-      
+
     } else {
       parent.innerHTML = "";
       const child = document.createElement("li");
