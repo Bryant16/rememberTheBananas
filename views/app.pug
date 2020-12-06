@@ -36,7 +36,11 @@ html(lang="en")
                                     tr
                                         th lists
                                         th: form.formList
+<<<<<<< Updated upstream
                                             button.add(type="submit") add list
+=======
+                                            button.add(type="submit") <i class="fas fa-plus"></i>
+>>>>>>> Stashed changes
                                             div#myModal.modal
                                                 div.modal-content
                                                     span.close &times
@@ -51,13 +55,25 @@ html(lang="en")
                                     tr
                                         th Contacts
                                     tr
+<<<<<<< Updated upstream
                                         th Tags
+=======
+                                        th <i class="fas fa-angle-right"></i>Smart Lists
+                                    tr
+                                        th <i class="fas fa-angle-right"></i>Contacts
+                                    tr
+                                        th <i class="fas fa-angle-right"></i>Tags
+>>>>>>> Stashed changes
                                     tr
                                         th Locations
                                 tbody
                                     each list in allLists
                                         tr
                                             td
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
                                                 a(href=`/app/${list.id}`)= list.name
                         //- div
                         //-     table
@@ -104,9 +120,13 @@ html(lang="en")
                         if list
                             li= list.name
                     .task-info
-                        div
-                            h3 Number of Tasks
-                                div#task-number
+                        div.taskCount
+                            h3(id='task-number')
+                                li Number of Tasks
+                div.edit-nav
+                    if selected
+                    div
+                        input(placeholder="")
 
         script(src="/javascripts/index.js" type="module")
         script(src="/javascripts/list.js" type="module")

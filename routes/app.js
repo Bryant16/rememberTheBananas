@@ -24,11 +24,13 @@ const listValidators = [
 router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
   const id = parseInt(req.session.auth.userId, 10);
   const user = await User.findByPk(id);
+  let selectedTasks = req.body.selectedDeletedTasks;
+  console.log(selectedDeletedTasks)
   const allLists = await List.findAll({
     where: {userId: id},
     include: [Task]
   });
- 
+
     res.render('app', { list: allLists[0], user, allLists, allTasks: allLists[0] })
 }));
 
