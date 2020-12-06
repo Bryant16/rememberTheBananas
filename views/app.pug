@@ -75,9 +75,11 @@ html(lang="en")
                         input(type="hidden" value=list.id name="listId")
                         input(class="inputBar" type="text" name="task")
                         div
-                        button.submit(type='submit') add task
+                            button.submit(type='submit') add task
                         div
                             button.delete(type="submit") Delete
+                        div
+                            button.edit(type="submit") Edit
                         div.tasks
                             if allTasks
                                 table

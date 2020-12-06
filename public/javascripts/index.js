@@ -9,6 +9,7 @@
   const deleteButton = document.querySelector(".delete");
   const taskRows = document.querySelectorAll(".taskListed");
   const checkBoxes = document.querySelectorAll(".checkbox");
+  const editButton = document.querySelector("");
 
  // const listId = document.querySelector()
   window.addEventListener("DOMContentLoaded", async () => {
@@ -30,7 +31,11 @@
       const listId = formData.get("listId");
       const searchValue = formData.get("searchValue")
 
-    const res = await fetch('/app/tasks', { method:"POST", headers:{"Content-Type": "application/json"}, body: JSON.stringify({ task: value, listId: listId }) });
+    const res = await fetch('/app/tasks', {
+      method:"POST",
+      headers:{"Content-Type": "application/json"},
+      body: JSON.stringify({ task: value, listId: listId })
+    });
     const { newTask } = await res.json();
     try {
       let singleTask = document.createElement('td');
@@ -64,42 +69,37 @@
         selectedTasks.push(allTasks[i]);
         taskRows[i].style.display = "none";
         checkBoxes[i].style.display = "none";
+
       }
     })
     console.log(selectedTasks)
-
 
     const res = await fetch('/app/tasks', {
       method:"POST",
       headers:{"Content-Type": "application/json"},
       body: JSON.stringify({ selectedTasks: selectedTasks })
     });
-
   })
 
-  // deleteButton.addEventListener("click", async (event) => {
-  //   event.preventDefault();
-  //   const list = document.querySelectorAll(".taskLi");
+  editButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+    let allTasks = [];
+    let selectedTasks = [];
 
-  //   // console.log(list[3]);
-  //   // console.log(list[4])
-  //   // checkboxes.forEach(checkbox => {
-  //   //   if (checkbox.checked) {
-  //   //     console.log(checkbox);
-  //   //   }
-  //   // });
-  //   const res = await fetch(`/app/tasks`, {
-  //     method: "DELETE", headers: {
-  //       "Content-Type": "application/json"
-  //     }, body: JSON.stringify({ items: [9, 10] })
-  //   });
-  //   const { message } = await res.json();
-  //   try {
+    taskRows.forEach(taskSelected => {
+      allTasks.push(taskSelected.innerHTML);
+    })
 
-  //   } catch (e) {
+    checkBoxes.forEach( (checkbox, i) => {
+      if (checkbox.checked) {
+        selectedTasks.push(allTasks[i]);
+        taskRows[i].style.display = "none";
+        checkBoxes[i].style.display = "none";
 
-  //   }
-  // })
+      }
+    })
+    console.log(selectedTasks)
+  })
 
   searchButton.addEventListener("click", async (event)=>{
     event.preventDefault();
