@@ -27,12 +27,7 @@ router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
     where: {userId: id},
     include: [Task]
   });
-  // const list = await List.findByPk(1);
-  // const allTasks = await List.findByPk(1, {
-  //   include: [Task]
-  // })
-  console.log(`lists:`, allLists[0])
-  //const tasks = allTasks.Task;
+ 
     res.render('app', { list: allLists[0], user, allLists, allTasks: allLists[0] })
 }));
 
@@ -45,7 +40,7 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
   const allLists = await List.findAll({
     where: { userId: user }
   });
-  
+
   res.render('app', { list, allLists, allTasks: list });
 }))
 //router.delete ('/tasks/:id',())
