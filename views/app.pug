@@ -15,8 +15,8 @@ html(lang="en")
                 div.searchbar
                     //- form(method="post" action="/app/search" class="formSearch")
                     form.search
-                    button(id="search" class="fas fa-search" href="#" type="submit")
-                    input(id="textBar" class="fas fa-search" type="text" class="inputBar" placeholder="Search for a task")
+                        span: button(id="search" class="fas fa-search" href="#" type="submit")
+                        span: input(id="textBar" class="fas fa-search" type="text" class="inputBar" placeholder="Search for a task" name="searchValue")
                     //i(id="search" class="fas fa-search" href="#")
                 div.hello
                     a Welcome to Remember the Bananas #{user.username}!
