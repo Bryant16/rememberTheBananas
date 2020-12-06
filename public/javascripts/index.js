@@ -68,6 +68,8 @@ const logoutButton = document.querySelector(".logoutbutton");
       allTasks.push(taskSelected.innerHTML);
     })
 
+    // console.log(taskRows)
+
     checkBoxes.forEach( (checkbox, i) => {
       if (checkbox.checked) {
         selectedTasks.push(allTasks[i]);
@@ -78,8 +80,8 @@ const logoutButton = document.querySelector(".logoutbutton");
     })
     console.log(selectedTasks)
 
-    const res = await fetch('/app/tasks', {
-      method:"POST",
+    const res = await fetch('tasks', {
+      method:"DELETE",
       headers:{"Content-Type": "application/json"},
       body: JSON.stringify({ selectedItems: selectedTasks })
     });

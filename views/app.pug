@@ -36,7 +36,7 @@ html(lang="en")
                                         th <i class="fas fa-angle-right"></i>All tasks
                                     tr
                                         th <i class="fas fa-angle-right"></i>lists
-                                        th: form.formList
+                                        th
                                             button.add(type="submit") <i class="fas fa-plus"></i>
                                             div#myModal.modal
                                                 div.modal-content
@@ -59,7 +59,6 @@ html(lang="en")
                                     each list in allLists
                                         tr
                                             td
-
                                                 a(href=`/app/${list.id}`)= list.name
                         //- div
                         //-     table
@@ -74,31 +73,32 @@ html(lang="en")
                         //-                 td Locations
                 div.main(id='taskfield')
                     div.tasks
-                        if allTasks
-                            table.contentTable
-                                thead
-                                    tr
-                                        th
-                                        th
-                                            form.form
-                                                <input type="hidden" value=#{list.id} name="listId">
-                                                <input class="inputBar" type="text" name="task" placeholder="Add a task...">
-                                        th
-                                            button.submit(type='submit') Add
-                                            button.delete(type="submit") Delete
+                        table.contentTable
+                            thead
+                                tr
+                                    th
+                                    th
+                                        form.form
+                                            <input type="hidden" value=#{list.id} name="listId">
+                                            <input class="inputBar" type="text" name="task" placeholder="Add a task...">
+                                    th
+                                        button.submit(type='submit') Add
+                                        button.delete(type="submit") Delete
                                 tbody.taskRow
+                                if allTasks
                                     each task in allTasks.Tasks
                                         tr
                                             td.check: <input class="checkbox" type="checkbox"/>
                                             td(class="taskListed")=task.name
                                             td
-                        else
-                            table
-                                thead
-                                    tr
-                                        th check
-                                        th task
-                                tbody.taskRow
+                        //- else
+                        //-     table.contentTable
+                        //-         thead
+                        //-             tr
+                        //-                 th check
+                        //-                 th task
+                        //-                 th
+                        //-         tbody.taskRow
                 div.main(id="random")
                     ul.current-list
                         if list

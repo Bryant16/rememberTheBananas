@@ -50,7 +50,7 @@ router.post('/tasks', asyncHandler(async (req,res, next) => {
 
   const id = parseInt(req.body.listId, 10);
 
-  let selectedItems = req.body.selectedDeletedTasks;
+  // let selectedItems = req.body.selectedDeletedTasks;
   // console.log('DELETED:',selectedDeletedTasks)
 
   const list = await List.findByPk(id, {
@@ -74,7 +74,14 @@ router.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
 
 router.delete('/tasks', asyncHandler(async (req, res) => {
   const id = parseInt(req.params.id, 10);
-  const itemsToDelete = req.body.items;
+  const itemsToDelete = req.body.selectedItems;
+
+  console.log("HIIIII")
+  // const taskIds = await Task.findAll({
+  //   where: {
+
+  //   }
+  // })
   await ListandTask.destroy({
     where: {
       taskId: itemsToDelete
