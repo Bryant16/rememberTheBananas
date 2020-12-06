@@ -87,7 +87,7 @@ html(lang="en")
                                             th task
                                     tbody.taskRow
                                         each task in allTasks.Tasks
-                                            tr.taskRows
+                                            tr
                                                 td: <input class="checkbox" type="checkbox"/>
                                                 td(class="taskListed")=task.name
                             else
