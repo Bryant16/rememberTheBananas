@@ -30,7 +30,7 @@ html(lang="en")
                 div.main(id="sidebar")
                         <img class="imagesidebar" src="/images/newLogo2.png">
                             table
-                                thead 
+                                thead
                                     tr
                                         th All tasks
                                     tr
@@ -48,9 +48,9 @@ html(lang="en")
                                         th Favorites
                                     tr
                                         th Smart Lists
-                                    tr 
+                                    tr
                                         th Contacts
-                                    tr  
+                                    tr
                                         th Tags
                                     tr
                                         th Locations
@@ -63,7 +63,7 @@ html(lang="en")
                         //-     table
                         //-         thead
                         //-             tr
-                        //-                 th 
+                        //-                 th
                         //-         tbody
                         //-             tr
                         //-                 td All Tasks
@@ -87,10 +87,10 @@ html(lang="en")
                                             th task
                                     tbody.taskRow
                                         each task in allTasks.Tasks
-                                            tr
+                                            tr.taskRows
                                                 td: <input class="checkbox" type="checkbox"/>
                                                 td(class="taskListed")=task.name
-                            else 
+                            else
                                 table
                                     thead
                                         tr
