@@ -20,6 +20,7 @@ const listValidators = [
     err.status = 404;
     return err;
   };
+router.use(requireAuth);
 
 router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
   const id = parseInt(req.session.auth.userId, 10);
@@ -28,7 +29,7 @@ router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
     where: {userId: id},
     include: [Task]
   });
- 
+
     res.render('app', { list: allLists[0], user, allLists, allTasks: allLists[0] })
 }));
 

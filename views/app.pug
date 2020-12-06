@@ -30,13 +30,13 @@ html(lang="en")
                 div.main(id="sidebar")
                         <img class="imagesidebar" src="/images/newLogo2.png">
                             table
-                                thead 
+                                thead
                                     tr
                                         th <i class="fas fa-angle-right"></i>All tasks
                                     tr
                                         th <i class="fas fa-angle-right"></i>lists
                                         th: form.formList
-                                            button.add(type="submit") <i class="fas fa-plus"></i> 
+                                            button.add(type="submit") <i class="fas fa-plus"></i>
                                             div#myModal.modal
                                                 div.modal-content
                                                     span.close &times
@@ -48,9 +48,9 @@ html(lang="en")
                                         th <i class="fas fa-angle-right"></i>Favorites
                                     tr
                                         th <i class="fas fa-angle-right"></i>Smart Lists
-                                    tr 
+                                    tr
                                         th <i class="fas fa-angle-right"></i>Contacts
-                                    tr  
+                                    tr
                                         th <i class="fas fa-angle-right"></i>Tags
                                     tr
                                         th Locations
@@ -58,13 +58,13 @@ html(lang="en")
                                     each list in allLists
                                         tr
                                             td
-                                            
+
                                                 a(href=`/app/${list.id}`)= list.name
                         //- div
                         //-     table
                         //-         thead
                         //-             tr
-                        //-                 th 
+                        //-                 th
                         //-         tbody
                         //-             tr
                         //-                 td All Tasks
@@ -89,7 +89,7 @@ html(lang="en")
                                         tr
                                             td: <input class="checkbox" type="checkbox"/>
                                             td(class="taskListed")=task.name
-                        else 
+                        else
                             table
                                 thead
                                     tr
@@ -102,7 +102,7 @@ html(lang="en")
                          <li>#{list.name}<i class="fas fa-wifi"></i><i class="far fa-calendar"></i></li>
                     .task-info
                         div.taskCount
-                            h3(id='task-number') 
+                            h3(id='task-number')
                                 li Number of Tasks
 
         script(src="/javascripts/index.js" type="module")
