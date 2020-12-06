@@ -44,7 +44,7 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
 
   res.render('app', { list, allLists, allTasks: list });
 }))
-//router.delete ('/tasks/:id',())
+
 router.post('/tasks', asyncHandler(async (req,res, next) => {
   const id = parseInt(req.body.listId);
   const list = await List.findByPk(id, {
@@ -106,15 +106,13 @@ router.post('/search', asyncHandler(async (req, res) => {
         where: { userId: id }
       },
       where: {
-        name: { [Op.iLike]: `%${value}%` } 
+        name: { [Op.iLike]: `%${value}%` }
       }
     })
 
-  } 
+  }
 
    res.json({ allTasks })
 }))
 
-
-//check user session??
 module.exports = router;
