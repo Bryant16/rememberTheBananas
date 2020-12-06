@@ -4,15 +4,12 @@
   const addTask = document.querySelector(".submit");
   const form = document.querySelector(".form");
   const dropdown = document.querySelector(".dropdown");
-<<<<<<< HEAD
   const searchButton = document.querySelector(".fa-search");
   const formSearch = document.querySelector(".search");
 
 
  // const listId = document.querySelector()
-=======
 const deleteButton = document.querySelector(".delete");
->>>>>>> samiListModal
   window.addEventListener("DOMContentLoaded", async () => {
 
     const numberOfTasks = () => {
