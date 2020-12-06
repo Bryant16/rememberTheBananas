@@ -68,32 +68,34 @@ router.get('/login', csrfProtection, (req, res, next)=> {
 router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, res) => {
   let errors = [];
   const validatorErrors = validationResult(req);
+  const { username, password } = req.body;
   if (validatorErrors.isEmpty()) {
-    const { username, password } = req.body;
-    const user = await User.findOne({
-      where: { username },
+    const user = await User.findOne({where: { username }
     });
 
-    if (user !== null) {
-      const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
+  if (user !== null) {
+    console.log(`user not null`)
+    const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
 
-      if (passwordMatch) {
-        loginUser(req, res, user)
-        return res.redirect('/app')
-      }
+    if (passwordMatch) {
+      console.log(passwordMatch)
+      loginUser(req, res, user)
+      return res.redirect('/app')
     }
+  }
     errors.push('Login failed for the provided username and password');
 
   } else {
-    errors = validatorErrors.array().map((error) => error.msg);
-    res.render('/login', {
-      title: "Login",
-      username,
-      errors,
-      csrfToken: req.csrfToken(),
-    })
-  }
-  
+      errors = validatorErrors.array().map((error) => error.msg);
+    }
+      res.render('login', {
+        title: "Login",
+        username: req.body.username,
+        errors,
+        token: req.csrfToken(),
+      })
+
+
 }))
 
 router.get('/signup', csrfProtection,  (req, res, next)=> {
@@ -121,11 +123,12 @@ router.post('/signup', validateNewUser, csrfProtection, asyncHandler(async (req,
     // res.redirect('/app');
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
-    res.render('/signup', {
+    res.render('sign-up', {
       title: 'Sign up',
-      user,
+      username: req.body.username,
+      email: req.body.email,
       errors,
-      csrfToken: req.csrfToken()
+      token: req.csrfToken()
     });
   }
 }));

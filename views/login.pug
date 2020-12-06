@@ -20,16 +20,16 @@ html
         div.inputs
             p.message Been Here Before? Welcome back!
             form(action="/users/login" method="post")
+                input(name="_csrf" value=token type="hidden")
                 if errors
                     div.alert
                         p The following errors occured:
                         ul
                             each error in errors
                                 li=error
-                input(name="_csrf" value=token type="hidden")
                 div.login_container
                     div
-                        input.label(name="userName" type="text" placeholder="Username" value=username required)
+                        input.label(name="username" type="text" placeholder="Username" value=username required)
                     div
                         input.label(name="password" type="password" placeholder="Password" required)
 
