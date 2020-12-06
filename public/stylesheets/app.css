@@ -14,7 +14,7 @@ body {
     background-color: green;
     border-radius: 3px;
     box-shadow: grey;
-    
+
 }
 .hello button {
     border-radius: 3px;
@@ -34,16 +34,16 @@ body {
     width: 15%;
 }
 .masthead div {
-  
+
 }
 #search {
     opacity: .3;
     border: none;
-    
+
 }
 .searchbar:hover {
     background-color: white ;
-  
+
 }
 #textBar {
     /* padding: 5px; */
@@ -59,7 +59,7 @@ body {
 }
 #sidebar {
 
-    
+
 }
 
 #taskfield {
@@ -74,4 +74,9 @@ body {
 .lists img {
     width: 100px;
     height: 100px;
+}
+
+#edit-nav {
+    display: flex;
+    justify-content: center;
 }

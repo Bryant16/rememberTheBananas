@@ -9,7 +9,7 @@
   const deleteButton = document.querySelector(".delete");
   const taskRows = document.querySelectorAll(".taskListed");
   const checkBoxes = document.querySelectorAll(".checkbox");
-  const editButton = document.querySelector("");
+  // const editButton = document.querySelector("");
 
  // const listId = document.querySelector()
   window.addEventListener("DOMContentLoaded", async () => {
@@ -77,29 +77,29 @@
     const res = await fetch('/app/tasks', {
       method:"POST",
       headers:{"Content-Type": "application/json"},
-      body: JSON.stringify({ selectedTasks: selectedTasks })
+      body: JSON.stringify({ selectedItems: selectedTasks })
     });
   })
 
-  editButton.addEventListener("click", async (event) => {
-    event.preventDefault();
-    let allTasks = [];
-    let selectedTasks = [];
+  // editButton.addEventListener("click", async (event) => {
+  //   event.preventDefault();
+  //   let allTasks = [];
+  //   let selectedTasks = [];
 
-    taskRows.forEach(taskSelected => {
-      allTasks.push(taskSelected.innerHTML);
-    })
+  //   taskRows.forEach(taskSelected => {
+  //     allTasks.push(taskSelected.innerHTML);
+  //   })
 
-    checkBoxes.forEach( (checkbox, i) => {
-      if (checkbox.checked) {
-        selectedTasks.push(allTasks[i]);
-        taskRows[i].style.display = "none";
-        checkBoxes[i].style.display = "none";
+  //   checkBoxes.forEach( (checkbox, i) => {
+  //     if (checkbox.checked) {
+  //       selectedTasks.push(allTasks[i]);
+  //       taskRows[i].style.display = "none";
+  //       checkBoxes[i].style.display = "none";
 
-      }
-    })
-    console.log(selectedTasks)
-  })
+  //     }
+  //   })
+  //   console.log(selectedTasks)
+  // })
 
   searchButton.addEventListener("click", async (event)=>{
     event.preventDefault();

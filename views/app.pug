@@ -6,6 +6,7 @@ html(lang="en")
         link(rel='stylesheet' href="https://use.fontawesome.com/releases/v5.0.12/css/all.css")
         link(rel='stylesheet' href='/stylesheets/app.css')
         link(rel='stylesheet' href='/stylesheets/listModal.css')
+        link(rel='stylesheet' href='/stylesheets/editTaskNav.css')
         title Remember the Bananas
     body
         head
@@ -36,11 +37,7 @@ html(lang="en")
                                     tr
                                         th lists
                                         th: form.formList
-<<<<<<< Updated upstream
-                                            button.add(type="submit") add list
-=======
                                             button.add(type="submit") <i class="fas fa-plus"></i>
->>>>>>> Stashed changes
                                             div#myModal.modal
                                                 div.modal-content
                                                     span.close &times
@@ -55,25 +52,17 @@ html(lang="en")
                                     tr
                                         th Contacts
                                     tr
-<<<<<<< Updated upstream
-                                        th Tags
-=======
                                         th <i class="fas fa-angle-right"></i>Smart Lists
                                     tr
                                         th <i class="fas fa-angle-right"></i>Contacts
                                     tr
                                         th <i class="fas fa-angle-right"></i>Tags
->>>>>>> Stashed changes
                                     tr
                                         th Locations
                                 tbody
                                     each list in allLists
                                         tr
                                             td
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
                                                 a(href=`/app/${list.id}`)= list.name
                         //- div
                         //-     table
@@ -115,18 +104,26 @@ html(lang="en")
                                             th check
                                             th task
                                     tbody.taskRow
-                div.main(id="random")
-                    ul.current-list
-                        if list
-                            li= list.name
-                    .task-info
-                        div.taskCount
-                            h3(id='task-number')
-                                li Number of Tasks
-                div.edit-nav
-                    if selected
+                //- div.main(id="random")
+                //-     ul.current-list
+                //-         if list
+                //-             li= list.name
+                //-     .task-info
+                //-         div.taskCount
+                //-             h3(id='task-number')
+                //-                 li Number of Tasks
+                div.main(id="edit-nav")
                     div
-                        input(placeholder="")
+                        if !selectedItems
+
+                            div
+                                input(placeholder="${selectedItem[0]}")
+                                button(type="submit" class="fas fa-edit")
+                            div
+                                p Notes
+                            div
+                                textarea(name="notes", cols="30", rows="10")
+
 
         script(src="/javascripts/index.js" type="module")
         script(src="/javascripts/list.js" type="module")

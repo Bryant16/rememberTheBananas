@@ -24,8 +24,6 @@ const listValidators = [
 router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
   const id = parseInt(req.session.auth.userId, 10);
   const user = await User.findByPk(id);
-  let selectedTasks = req.body.selectedDeletedTasks;
-  console.log(selectedDeletedTasks)
   const allLists = await List.findAll({
     where: {userId: id},
     include: [Task]
@@ -49,6 +47,8 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
 
 router.post('/tasks', asyncHandler(async (req,res, next) => {
   const id = parseInt(req.body.listId);
+  let selectedItems = req.body.selectedDeletedTasks;
+  // console.log('DELETED:',selectedDeletedTasks)
   const list = await List.findByPk(id, {
     include: [Task]
   });
