@@ -1,6 +1,6 @@
 
 
-  const taskContainer = document.querySelector(".tasks");
+  const taskContainer = document.querySelector(".taskRow");
   const addTask = document.querySelector(".submit");
   const form = document.querySelector(".form");
   const dropdown = document.querySelector(".dropdown");
@@ -28,15 +28,20 @@ const deleteButton = document.querySelector(".delete");
     const value = formData.get("task");
       const listId = formData.get("listId");
       const searchValue = formData.get("searchValue")
-      console.log(searchValue);
+      
     const res = await fetch('/app/tasks', { method:"POST", headers:{"Content-Type": "application/json"}, body: JSON.stringify({ task: value, listId: listId }) });
     const { newTask } = await res.json();
     try {
-      let singleTask = document.createElement('tr');
+      let singleTask = document.createElement('td');
+      let check = document.createElement('td');
+      let row = document.createElement('tr');
       singleTask.innerHTML = newTask.name;
       singleTask.setAttribute("class", "taskListed");
-      singleTask.innerHTML = `<input class="checkbox" type="checkbox">${newTask.name} `;
-      taskContainer.appendChild(singleTask);
+      check.innerHTML= `<input class="checkbox" type="checkbox">`
+      // singleTask.innerHTML = `<input class="checkbox" type="checkbox">${newTask.name} `;
+      taskContainer.appendChild(row);
+      row.appendChild(check);
+      row.appendChild(singleTask);
     } catch (e) {
       console.log(e)
     }

@@ -55,10 +55,21 @@ body {
     display: flex;
     flex: row;
     justify-content: space-between;
+    background-color: rgb(21, 175, 21);
+}
+#sidebar {
+
     
 }
-.sidebar {
-    
+
+#taskfield {
+    background-color: lightgray;
+    flex-grow: 1.2;
+}
+.imagesidebar{
+    height: 100px;
+    width: 100px;
+
 }
 .lists img {
     width: 100px;

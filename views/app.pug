@@ -28,27 +28,48 @@ html(lang="en")
         main
             div(class="container")
                 div.main(id="sidebar")
-                    ul.lists
-                        img(class="imagesidebar" src="/images/newLogo2.png")
-                        form.formList
-                        button.add(type="submit") add list
-                        div#myModal.modal
-                            div.modal-content
-                                span.close &times
-                                p Add Your List..
-                                form(method="post" action="/app/lists")
-                                    input(class="textBar" type="text" name="list")
-                                    button.confirmAdd(type="submit") Add New List
-                            div
-                        div
+                        <img class="imagesidebar" src="/images/newLogo2.png">
                             table
                                 thead 
-                                    td lists
+                                    tr
+                                        th All tasks
+                                    tr
+                                        th lists
+                                        th: form.formList
+                                            button.add(type="submit") add list
+                                            div#myModal.modal
+                                                div.modal-content
+                                                    span.close &times
+                                                    p Add Your List..
+                                                    form(method="post" action="/app/lists")
+                                                        input(class="textBar" type="text" name="list")
+                                                        button.confirmAdd(type="submit") Add New List
+                                    tr
+                                        th Favorites
+                                    tr
+                                        th Smart Lists
+                                    tr 
+                                        th Contacts
+                                    tr  
+                                        th Tags
+                                    tr
+                                        th Locations
                                 tbody
                                     each list in allLists
                                         tr
                                             td
                                                 a(href=`/app/${list.id}`)= list.name
+                        //- div
+                        //-     table
+                        //-         thead
+                        //-             tr
+                        //-                 th 
+                        //-         tbody
+                        //-             tr
+                        //-                 td All Tasks
+                        //-                 td Contacts
+                        //-                 td Tags
+                        //-                 td Locations
                 div.main(id='taskfield')
                     form.form
                         input(type="hidden" value=list.id name="listId")
@@ -61,10 +82,21 @@ html(lang="en")
                             if allTasks
                                 table
                                     thead
-                                        td: <input class="checkbox" type="checkbox"/>
-                                    tbody
+                                        tr
+                                            th check
+                                            th task
+                                    tbody.taskRow
                                         each task in allTasks.Tasks
-                                            tr(class="taskLi")=task.name
+                                            tr
+                                                td: <input class="checkbox" type="checkbox"/>
+                                                td(class="taskListed")=task.name
+                            else 
+                                table
+                                    thead
+                                        tr
+                                            th check
+                                            th task
+                                    tbody.taskRow
                 div.main(id="random")
                     ul.current-list
                         if list
