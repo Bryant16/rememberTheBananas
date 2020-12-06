@@ -14,17 +14,20 @@ html(lang="en")
                     i(id="bars" class="fas fa-bars" href="#")
                 div.searchbar
                     i(id="search" class="fas fa-search" href="#")
-                    input(id="textBar" type="text" class="inputBar")
+                    <input id="textBar" class="fas fa-search" type="text" class="inputBar">
                 div.hello
                     a Welcome to Remember the Bananas #{user.username}!
-                div.logout
                     button.logoutbutton() logout
+                div.logout
+                    <i class="fas fa-cloud"></i>
+                    <i class="far fa-bell"></i>
+                    <i class="fas fa-cogs"></i>
         main
             div(class="container")
                 div.main(id="sidebar")
                     div(id="imagediv")
                         span Remember the Bananas
-                        img(class="imagesidebar" src="/images/chimp.png")
+                        img(class="imagesidebar" src="/images/newLogo2.png")
                     ul.lists
                         form.formList
                         button.add(type="submit") add list
