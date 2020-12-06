@@ -47,8 +47,12 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
 }))
 
 router.post('/tasks', asyncHandler(async (req,res, next) => {
+
   const id = parseInt(req.body.listId, 10);
-  console.log(`IDDDDDD:`,id)
+
+  let selectedItems = req.body.selectedDeletedTasks;
+  // console.log('DELETED:',selectedDeletedTasks)
+
   const list = await List.findByPk(id, {
     include: [Task]
   });

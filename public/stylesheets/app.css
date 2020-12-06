@@ -16,7 +16,7 @@ body {
     border-radius: 3px;
     box-shadow: grey;
     color: white;
-    
+
 }
 .logoutbutton   {
     opacity: .5;
@@ -46,15 +46,14 @@ body {
     border: 1px solid black;
     width: 15%;
 }
-
 #search {
     opacity: .3;
     border: none;
-    
+
 }
 .searchbar:hover {
     background-color: white ;
-  
+
 }
 #textBar {
     /* padding: 5px; */
@@ -70,7 +69,7 @@ body {
 }
 #sidebar {
     flex-grow: 1;
-    
+
 }
 #sidebar thead {
     text-align: left;
@@ -83,7 +82,7 @@ body {
     opacity: .3;
     background-color: green;
     border-radius: 3px;
-    
+
 }
 
 
@@ -99,7 +98,7 @@ body {
 }
 
 #taskfield table{
-    
+
     margin: 0;
 }
 
@@ -203,7 +202,7 @@ body {
 
 .share {
     margin-left: 15px;
-    
+
 }
 
 .share button {
@@ -211,4 +210,8 @@ body {
     border-radius: 3px;
     color: white;
     padding-right: 3px;
+}
+#edit-nav {
+    display: flex;
+    justify-content: center;
 }

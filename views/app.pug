@@ -6,6 +6,7 @@ html(lang="en")
         link(rel='stylesheet' href="https://use.fontawesome.com/releases/v5.0.12/css/all.css")
         link(rel='stylesheet' href='/stylesheets/app.css')
         link(rel='stylesheet' href='/stylesheets/listModal.css')
+        link(rel='stylesheet' href='/stylesheets/editTaskNav.css')
         title Remember the Bananas
     body
         head
@@ -108,6 +109,18 @@ html(lang="en")
                                 li Number of Tasks
                         div.share
                             button: i(class="far fa-user")  Share
+
+                    //- div.main(id="edit-nav")
+                    //-     div
+                    //-         if !selectedItems
+
+                    //-             div
+                    //-                 input(placeholder="${selectedItem[0]}")
+                    //-                 button(type="submit" class="fas fa-edit")
+                    //-             div
+                    //-                 p Notes
+                    //-             div
+                    //-                 textarea(name="notes", cols="30", rows="10")
 
         script(src="/javascripts/index.js" type="module")
         script(src="/javascripts/list.js" type="module")
