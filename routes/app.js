@@ -25,14 +25,11 @@ router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
   const id = parseInt(req.session.auth.userId, 10);
   const user = await User.findByPk(id);
   const allLists = await List.findAll({
-    where: {userId: id}
-  });
-  const list = await List.findByPk(1);
-  const allTasks = await List.findByPk(1, {
+    where: {userId: id},
     include: [Task]
-  })
-  //const tasks = allTasks.Task;
-    res.render('app', { list, user, allLists, allTasks })
+  });
+ 
+    res.render('app', { list: allLists[0], user, allLists, allTasks: allLists[0] })
 }));
 
 router.get('/:id', asyncHandler(async(req, res, next) => {
@@ -44,7 +41,7 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
   const allLists = await List.findAll({
     where: { userId: user }
   });
-  console.log(list);
+
   res.render('app', { list, allLists, allTasks: list });
 }))
 //router.delete ('/tasks/:id',())
@@ -59,11 +56,6 @@ router.post('/tasks', asyncHandler(async (req,res, next) => {
     res.json({ newTask });
 }))
 
-// router.post('/tasks', asyncHandler(async (req,res, next) => {
-//   const list = await List.create({ name:req.body.list });
-//   res.json({ list });
-// }))
-
 router.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
     const id = parseInt(req.params.id, 10);
     const list = await List.findByPk(id);
@@ -73,13 +65,33 @@ router.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
         next(listNotFoundError(id))
     }
 }));
- // const user = await User.findByPK({})
-    // const list = await List.create({})
+
+router.delete('/tasks', asyncHandler(async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const itemsToDelete = req.body.items;
+  await ListandTask.destroy({
+    where: {
+      taskId: itemsToDelete
+    }
+  })
+  const task = await Task.destroy({
+    where: {
+      id: itemsToDelete
+    }
+  })
+  if (task) {
+    res.json({ message: "success!" });
+  }
+}))
+
 router.post('/lists', asyncHandler(async(req, res)=>{
   const id = parseInt(req.session.auth.userId, 10);
   const list = await List.create({ name: req.body.list, userId: id });
-  const allLists = await List.findAll();
-  res.render('app', { allLists, list });
+  const allLists = await List.findAll({
+    where:{userId: id}
+  });
+
+  res.render('app', { allLists, list});
 }));
 
 router.post('/search', asyncHandler(async (req, res) => {

@@ -47,17 +47,13 @@ html(lang="en")
                         input(type="hidden" value=list.id name="listId")
                         input(class="inputBar" type="text" name="task")
                         div
-                            select.dropdown
-                                if !lists
-                                    option(value="default") Home
-                                else
-                                    each user in users
-                                        option(value="user.List.name") #{user.List.name}
                         button.submit(type='submit') add task
+                        div
+                            button.delete(type="submit") Delete
                         ul.tasks
                             if allTasks
                                 each task in allTasks.Tasks
-                                    li.taskListed= task.name
+                                    <li class="taskLi"><input class="checkbox" type="checkbox" value=#{task.id}>#{task.name}</li>
                 div.main(id="random")
                     ul.current-list
                         if list
@@ -66,6 +62,6 @@ html(lang="en")
                         div
                             h3 Number of Tasks
                                 div#task-number
-                            
+
         script(src="/javascripts/index.js" type="module")
         script(src="/javascripts/list.js" type="module")
