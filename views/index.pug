@@ -3,12 +3,60 @@ extends layout
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
-  link(rel="stylesheet" href="/stylesheets/logo.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
     body
-      div.logo
-          p Remember the bananas
-          img(src="/images/chimp.png")
+
+      head
+        div.navbar
+          div.logo: <img src="/images/newLogo2.png">
+          div.links
+              a(href="#") Tour
+              a(href="#") What's New
+              a(href="#") Upgrade
+              a(href="#") Help
+              a(href="/users/login") Login
+              a(id="signup" href="/users/signup") Sign up for free
+
+      main
+        div.mainContainer
+          div.heading
+            h1 The smart to-do app for busy people.
+          div.headingButton
+            form(action="/users/signup" method="get")
+              button(type="submit") Sign Up for Free
+          div.man
+              img(src="/images/thinking-man-dark-background.png")
+          div.quotes
+            h1 Get to-dos out of your head
+            h2 Stop thinking about your to-dos, 
+            h2 and let the app remember for you.
+        div.footer-container
+          img(src="/images/banana.png")
+          ul.footer-nav-heading Contributors
+            li Nichole O'Brien
+            li Samantha Butler
+            li Bryant Klein
+            li Nicholas Bierman
+          ul.product Product
+            li Tour
+            li What's New
+            li Download Apps
+            li Integrations
+            li Upgrade
+          ul.community Community
+            li Forumns
+            li Tester Program
+            li Translations
+            li API
+          ul.support Support
+            li Help Center
+            li Get Started
+            li Tips and Tricks
+            li Status
+            li Contact Us
+
+            
+

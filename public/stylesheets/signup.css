@@ -58,7 +58,7 @@ body {
     font-weight: 500;
     color: white;
     text-align: center;
-    margin: 0;
+    margin-top: 30px;
 }
 
 .login {
@@ -120,7 +120,7 @@ div > button.label:hover {
 }
 
 .statement img {
-    width: 400px;
+    width: 100px;
     height: auto;
     /* background-color: white; */
 }

@@ -53,7 +53,7 @@ body {
 
 .user_button {
     position: relative;
-    /* margin-right: 20px; */
+    margin-right: 20px;
     width:100%;
     padding: 40px 0;
 }
@@ -121,5 +121,7 @@ div > button.label {
 
 div > button.label:hover {
     background-image: linear-gradient(45deg, #FFCF00, #2ba735);
-    /* transition:slidebg 5s linear infinite; */
-}
+    transition:slidebg 5s linear infinite;
+} 
+
+
