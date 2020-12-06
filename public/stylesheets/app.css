@@ -15,12 +15,24 @@ body {
     background-color: green;
     border-radius: 3px;
     box-shadow: grey;
+    color: white;
     
 }
-.hello button {
-    border-radius: 3px;
-    background-color: green;
+.logoutbutton   {
+    opacity: .5;
     color: white;
+}
+.hello {
+    display: flex;
+    align-content: flex-end;
+}
+.hello button {
+    border-radius: 5px;
+    background-color:white;
+    color: green;
+}
+.hello button:hover {
+    opacity: 1;
 }
 .logout i{
     padding-left: 5px;
@@ -53,7 +65,7 @@ body {
 .container {
     display: flex;
     flex: row;
-    
+    min-height: 600px;
     background-color: rgb(21, 175, 21);
 }
 #sidebar {
@@ -63,9 +75,7 @@ body {
 #sidebar thead {
     text-align: left;
 }
-#sidebar thead tr {
-    
-}
+
 
 .add,
 .fa-plus {
@@ -102,15 +112,33 @@ body {
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0, 0.15);
 }
-.contentTable thead tr {
-    background-color: lightgray;
-    color: white;
-    text-align: left;
+.contentTable thead {
+    background-color: rgb(177, 174, 174, .4);
+    box-shadow: black;
+   border-radius: 4px;
 }
-
+.submit {
+    color: green;
+    border: none;
+    padding: 10px;
+    background: none;
+}
+.delete {
+    color: red;
+    padding: 10px;
+    background: none;
+    border: none;
+}
 .contentTable th,
 .contentTable td {
-    padding: 6px 8px;
+    font-size: 15px;
+}
+.form {
+    display: flex;
+}
+.form .inputBar {
+    min-width: 100%;
+    opacity: .4;
 }
 .contentTable tbody tr {
     border-bottom:1px solid #dddddd ;
@@ -120,6 +148,8 @@ body {
     background-color: #f3f3f3;
 }
 
+
+/* side bar right */
 #random {
     flex-grow: 2;
     border: .5px solid white;
@@ -136,7 +166,6 @@ body {
     height: 100px;
 }
 
-/* right bar */
 .main ul {
     list-style: none;
     text-align: left;
@@ -170,4 +199,16 @@ body {
     list-style: none;
     font-size: 12px;
     padding: 0;
+}
+
+.share {
+    margin-left: 15px;
+    
+}
+
+.share button {
+    background-color: rgb(19, 121, 19, .5);
+    border-radius: 3px;
+    color: white;
+    padding-right: 3px;
 }

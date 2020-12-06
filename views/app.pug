@@ -20,7 +20,7 @@ html(lang="en")
                     //i(id="search" class="fas fa-search" href="#")
                 div.hello
                     a Welcome to Remember the Bananas #{user.username}!
-                    button.logoutbutton() logout
+                    button.logoutbutton: i(class="fas fa-sign-out-alt")
                 div.logout
                     <i class="fas fa-cloud"></i>
                     <i class="far fa-bell"></i>
@@ -53,7 +53,7 @@ html(lang="en")
                                     tr  
                                         th <i class="fas fa-angle-right"></i>Tags
                                     tr
-                                        th Locations
+                                        th <i class="fas fa-angle-right"></i>Locations
                                 tbody
                                     each list in allLists
                                         tr
@@ -72,23 +72,25 @@ html(lang="en")
                         //-                 td Tags
                         //-                 td Locations
                 div.main(id='taskfield')
-                    form.form
-                        <input type="hidden" value=#{list.id} name="listId">
-                        <input class="inputBar" type="text" name="task">
-                        button.submit(type='submit') add task
-                        button.delete(type="submit") Delete
                     div.tasks
                         if allTasks
                             table.contentTable
                                 thead
                                     tr
-                                        th check
-                                        th task
+                                        th
+                                        th 
+                                            form.form
+                                                <input type="hidden" value=#{list.id} name="listId">
+                                                <input class="inputBar" type="text" name="task" placeholder="Add a task...">
+                                        th 
+                                            button.submit(type='submit') Add 
+                                            button.delete(type="submit") Delete
                                 tbody.taskRow
                                     each task in allTasks.Tasks
                                         tr
-                                            td: <input class="checkbox" type="checkbox"/>
+                                            td.check: <input class="checkbox" type="checkbox"/>
                                             td(class="taskListed")=task.name
+                                            td
                         else 
                             table
                                 thead
@@ -104,6 +106,8 @@ html(lang="en")
                         div.taskCount
                             h3(id='task-number') 
                                 li Number of Tasks
+                        div.share
+                            button: i(class="far fa-user")  Share
 
         script(src="/javascripts/index.js" type="module")
         script(src="/javascripts/list.js" type="module")
