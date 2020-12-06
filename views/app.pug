@@ -43,6 +43,9 @@ html(lang="en")
                                 a(href=`/app/${list.id}`)= list.name
                                 br
                 div.main(id='taskfield')
+                    div.toolbar-flex-container
+                        div.toolbar
+                            input(type="checkbox")
                     form.form
                         input(type="hidden" value=list.id name="listId")
                         input(class="inputBar" type="text" name="task")
