@@ -46,7 +46,8 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
 }))
 
 router.post('/tasks', asyncHandler(async (req,res, next) => {
-  const id = parseInt(req.body.listId);
+  const id = parseInt(req.body.listId, 10);
+  console.log(`IDDDDDD:`,id)
   const list = await List.findByPk(id, {
     include: [Task]
   });

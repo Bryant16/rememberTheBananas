@@ -15,8 +15,10 @@ const deleteButton = document.querySelector(".delete");
     const numberOfTasks = () => {
       const tasks = document.querySelectorAll(".taskListed")
       const div = document.getElementById("task-number")
-
-      div.innerHTML =  tasks.length
+      const li = document.createElement('li');
+      li.innerHTML = "Tasks"
+      div.innerHTML =  tasks.length;
+      div.appendChild(li)
   }
 
     numberOfTasks();
@@ -28,7 +30,6 @@ const deleteButton = document.querySelector(".delete");
     const value = formData.get("task");
       const listId = formData.get("listId");
       const searchValue = formData.get("searchValue")
-      
     const res = await fetch('/app/tasks', { method:"POST", headers:{"Content-Type": "application/json"}, body: JSON.stringify({ task: value, listId: listId }) });
     const { newTask } = await res.json();
     try {

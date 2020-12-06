@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
 }
+/* nav bar */
 .masthead {
     display: flex;
     flex-direction: row;
@@ -33,9 +34,7 @@ body {
     border: 1px solid black;
     width: 15%;
 }
-.masthead div {
-  
-}
+
 #search {
     opacity: .3;
     border: none;
@@ -50,28 +49,125 @@ body {
     opacity: .3;
     width: 100%;
 }
-
+/* sidebar */
 .container {
     display: flex;
     flex: row;
-    justify-content: space-between;
+    
     background-color: rgb(21, 175, 21);
 }
 #sidebar {
-
+    flex-grow: 1;
+    
+}
+#sidebar thead {
+    text-align: left;
+}
+#sidebar thead tr {
     
 }
 
+.add,
+.fa-plus {
+    background: none;
+    opacity: .3;
+    background-color: green;
+    border-radius: 3px;
+    
+}
+
+
+/* tasks */
 #taskfield {
+    background-color: rgb(243, 243, 243);
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-grow: 2;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+#taskfield table{
+    
+    margin: 0;
+}
+
+.contentTable {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: .9em;
+    min-width: 100%;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0, 0.15);
+}
+.contentTable thead tr {
     background-color: lightgray;
-    flex-grow: 1.2;
+    color: white;
+    text-align: left;
+}
+
+.contentTable th,
+.contentTable td {
+    padding: 6px 8px;
+}
+.contentTable tbody tr {
+    border-bottom:1px solid #dddddd ;
+    text-align: left;
+}
+.contentTable tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+#random {
+    flex-grow: 2;
+    border: .5px solid white;
+    border-radius: 4px;
+    margin-top: 10px;
 }
 .imagesidebar{
     height: 100px;
-    width: 100px;
+    width: 160px;
 
 }
 .lists img {
     width: 100px;
     height: 100px;
+}
+
+/* right bar */
+.main ul {
+    list-style: none;
+    text-align: left;
+    margin: 0;
+    margin-top: 15px;
+    font-weight: bold;
+
+}
+.main li,
+.main i {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.taskCount {
+    display: flex;
+    flex-direction: row;
+    padding-left: 15px;
+}
+
+.taskCount h3 {
+    border: 1px solid rgba(0,0,0, 0.15);
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 10px;
+    text-align: left;
+}
+.taskCount h3 text {
+    text-align: center;
+}
+.taskCount li {
+    list-style: none;
+    font-size: 12px;
+    padding: 0;
 }

@@ -32,11 +32,11 @@ html(lang="en")
                             table
                                 thead 
                                     tr
-                                        th All tasks
+                                        th <i class="fas fa-angle-right"></i>All tasks
                                     tr
-                                        th lists
+                                        th <i class="fas fa-angle-right"></i>lists
                                         th: form.formList
-                                            button.add(type="submit") add list
+                                            button.add(type="submit") <i class="fas fa-plus"></i> 
                                             div#myModal.modal
                                                 div.modal-content
                                                     span.close &times
@@ -45,19 +45,20 @@ html(lang="en")
                                                         input(class="textBar" type="text" name="list")
                                                         button.confirmAdd(type="submit") Add New List
                                     tr
-                                        th Favorites
+                                        th <i class="fas fa-angle-right"></i>Favorites
                                     tr
-                                        th Smart Lists
+                                        th <i class="fas fa-angle-right"></i>Smart Lists
                                     tr 
-                                        th Contacts
+                                        th <i class="fas fa-angle-right"></i>Contacts
                                     tr  
-                                        th Tags
+                                        th <i class="fas fa-angle-right"></i>Tags
                                     tr
                                         th Locations
                                 tbody
                                     each list in allLists
                                         tr
                                             td
+                                            
                                                 a(href=`/app/${list.id}`)= list.name
                         //- div
                         //-     table
@@ -72,39 +73,37 @@ html(lang="en")
                         //-                 td Locations
                 div.main(id='taskfield')
                     form.form
-                        input(type="hidden" value=list.id name="listId")
-                        input(class="inputBar" type="text" name="task")
-                        div
+                        <input type="hidden" value=#{list.id} name="listId">
+                        <input class="inputBar" type="text" name="task">
                         button.submit(type='submit') add task
-                        div
-                            button.delete(type="submit") Delete
-                        div.tasks
-                            if allTasks
-                                table
-                                    thead
+                        button.delete(type="submit") Delete
+                    div.tasks
+                        if allTasks
+                            table.contentTable
+                                thead
+                                    tr
+                                        th check
+                                        th task
+                                tbody.taskRow
+                                    each task in allTasks.Tasks
                                         tr
-                                            th check
-                                            th task
-                                    tbody.taskRow
-                                        each task in allTasks.Tasks
-                                            tr
-                                                td: <input class="checkbox" type="checkbox"/>
-                                                td(class="taskListed")=task.name
-                            else 
-                                table
-                                    thead
-                                        tr
-                                            th check
-                                            th task
-                                    tbody.taskRow
+                                            td: <input class="checkbox" type="checkbox"/>
+                                            td(class="taskListed")=task.name
+                        else 
+                            table
+                                thead
+                                    tr
+                                        th check
+                                        th task
+                                tbody.taskRow
                 div.main(id="random")
                     ul.current-list
                         if list
-                            li= list.name
+                         <li>#{list.name}<i class="fas fa-wifi"></i><i class="far fa-calendar"></i></li>
                     .task-info
-                        div
-                            h3 Number of Tasks
-                                div#task-number
+                        div.taskCount
+                            h3(id='task-number') 
+                                li Number of Tasks
 
         script(src="/javascripts/index.js" type="module")
         script(src="/javascripts/list.js" type="module")
