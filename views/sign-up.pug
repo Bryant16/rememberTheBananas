@@ -23,12 +23,13 @@ html
         div.inputs
             p.message Sign up for free
             form(action="/users/signup" method="post")
-                if errors
-                    div.alert
-                        p The following errors occured:
-                        ul
-                            each error in errors
-                                li=error
+                div.errors
+                    if errors
+                        div.alert
+                            p The following errors occured:
+                            ul
+                                each error in errors
+                                    li=error
                 input(name="_csrf" value=token type="hidden")
                 div.login-container
                     div

@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+      block head
+        title="Express Starter App"
+        link(rel='stylesheet' href='/stylesheets/app.css')
+  body
+        div.navBar 
+            input.search(name="searchBar" placeholder="Search Bar")
+        div.container
+            div.sideBar
+                p This is the sidebar
+                div.logo
+            div.tasks
+                form(action="/app/tasks" method="post")
+                input(name="_csrf" value=token type="hidden")
+                div.login-container
+                    div
+                        label 
+                        input.label(name="username"  placeholder="tasks" )
+                        button.label(type="submit") Add Task
+                    div
+                    
+                        

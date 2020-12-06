@@ -15,18 +15,18 @@ html
             p.author - A.A. Milne, Winnie-the-Pooh
     div.right
         div.user_button
-            form(method="get" action="/users/signup")
-                button.create_user(type="submit") Create User
+            button.create_user(type="submit" onclick="window.location.href='/users/signup'") Create User
         div.inputs
             p.message Been Here Before? Welcome back!
             form(action="/users/login" method="post")
                 input(name="_csrf" value=token type="hidden")
-                if errors
-                    div.alert
-                        p The following errors occured:
-                        ul
-                            each error in errors
-                                li=error
+                div.errors
+                    if errors
+                        div.alert
+                            p The following errors occured:
+                            ul
+                                each error in errors
+                                    li=error
                 div.login_container
                     div
                         input.label(name="username" type="text" placeholder="Username" value=username required)

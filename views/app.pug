@@ -1,0 +1,71 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet' href="https://use.fontawesome.com/releases/v5.0.12/css/all.css")
+        link(rel='stylesheet' href='/stylesheets/app.css')
+        link(rel='stylesheet' href='/stylesheets/listModal.css')
+        title Remember the Bananas
+    body
+        header
+            div.masthead
+                div.burger
+                    i(id="bars" class="fas fa-bars" href="#")
+                div.searchbar
+                    //- form(method="post" action="/app/search" class="formSearch")
+                    form.search
+                        button(id="search" class="fas fa-search" href="#" type="submit")
+                        input(id="textBar" type="text" class="inputBar" name="searchValue")
+                div.hello
+                    a Welcome to Remember the Bananas #{user.username}!
+                div.logout
+                    button.logoutbutton() logout
+        main
+            div(class="container")
+                div.main(id="sidebar")
+                    div(id="imagediv")
+                        span Remember the Bananas
+                        img(class="imagesidebar" src="/images/chimp.png")
+                    ul.lists
+                        form.formList
+                        button.add(type="submit") add list
+                        div#myModal.modal
+                            div.modal-content
+                                span.close &times
+                                p Add Your List..
+                                form(method="post" action="/app/lists")
+                                    input(class="textBar" type="text" name="list")
+                                    button.confirmAdd(type="submit") Add New List
+                            div
+                        div
+                            each list in allLists
+                                a(href=`/app/${list.id}`)= list.name
+                                br
+                div.main(id='taskfield')
+                    form.form
+                        input(type="hidden" value=list.id name="listId")
+                        input(class="inputBar" type="text" name="task")
+                        div
+                            select.dropdown
+                                if !lists
+                                    option(value="default") Home
+                                else
+                                    each user in users
+                                        option(value="user.List.name") #{user.List.name}
+                        button.submit(type='submit') add task
+                        ul.tasks
+                            if allTasks
+                                each task in allTasks.Tasks
+                                    li.taskListed= task.name
+                div.main(id="random")
+                    ul.current-list
+                        if list
+                            li= list.name
+                    .task-info
+                        div
+                            h3 Number of Tasks
+                                div#task-number
+                            
+        script(src="/javascripts/index.js" type="module")
+        script(src="/javascripts/list.js" type="module")

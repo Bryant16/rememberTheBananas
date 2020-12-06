@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+      unique: false
     },
     userId: DataTypes.INTEGER
   }, {});
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     const columnMapping = {
       through: 'ListandTasks',
       otherKey: 'taskId',
-      foreignkey: 'listId'
+      foreignKey: 'listId'
     }
     List.belongsToMany(models.Task, columnMapping);
   };
