@@ -64,6 +64,9 @@ const deleteButton = document.querySelector(".delete");
 
       } catch (e) {
 
+      }
+    })
+
   searchButton.addEventListener("click", async (event)=>{
     event.preventDefault();
     const formData = new FormData(formSearch);
@@ -97,6 +100,5 @@ const deleteButton = document.querySelector(".delete");
       parent.appendChild(child);
       numberOfTasks();
     }
-
-    })
   })
+})
