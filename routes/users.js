@@ -137,7 +137,6 @@ router.post('/signup', validateNewUser, csrfProtection, asyncHandler(async (req,
 
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
-  // might need to change to /login
   res.redirect('/users/login');
 });
 
