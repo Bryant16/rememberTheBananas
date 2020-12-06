@@ -239,3 +239,18 @@ span {
 .lists {
     padding-top: 70px;
 }
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.searchError {
+    display: flex;
+    justify-content: center;
+    color: red;
+    font-size: 20px;
+    border: solid 2mm red;
+    list-style-type: none;
+}
