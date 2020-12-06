@@ -32,7 +32,7 @@ const deleteButton = document.querySelector(".delete");
     const res = await fetch('/app/tasks', { method:"POST", headers:{"Content-Type": "application/json"}, body: JSON.stringify({ task: value, listId: listId }) });
     const { newTask } = await res.json();
     try {
-      let singleTask = document.createElement('li');
+      let singleTask = document.createElement('tr');
       singleTask.innerHTML = newTask.name;
       singleTask.setAttribute("class", "taskListed");
       singleTask.innerHTML = `<input class="checkbox" type="checkbox">${newTask.name} `;

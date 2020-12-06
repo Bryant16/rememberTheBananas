@@ -1,177 +1,66 @@
+body {
+    margin: 0;
+    padding: 0;
+}
 .masthead {
-    display: grid;
-    grid-template-columns: 1fr 3fr 2fr 1fr;
-    grid-template-rows: auto;
-    background-color: green;
-    height: 45px;
-    position: relative;
-}
-
-.burger {
-    top: .75rem;
-    right: 1rem;
     display: flex;
-    flex-direction: column;
-    padding: 10px;
+    flex-direction: row;
     justify-content: space-between;
-    width: 30px;
-    height: 20px;
+    font-size: 1.5rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    background-color: green;
+    border-radius: 3px;
+    box-shadow: grey;
+    
+}
+.hello button {
+    border-radius: 3px;
+    background-color: green;
+    color: white;
+}
+.logout i{
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
-.burger .bar {
-    height: 2px;
-    width: 100%;
-    background-color: white;
-    border-radius: 10px;
-}
-
-#bars {
-    font-size: 11px;
-    padding-left: 9px;
-    padding-right: 9px;
-    padding-top: 7px;
-    padding-bottom: 7px;
+.searchbar {
     display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    border: 1px solid black;
+    width: 15%;
 }
-#bars:hover {
-    background-color: darkgreen;
+.masthead div {
+  
 }
-#search,
+#search {
+    opacity: .3;
+    border: none;
+    
+}
+.searchbar:hover {
+    background-color: white ;
+  
+}
 #textBar {
-    font-size: 11px;
-    padding-left: 9px;
-    padding-right: 9px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    margin-top: 7px;
-    display: inline-block;
-}
-.logout {
-    display: flex;
-    justify-content: flex-end;
-
-}
-.logoutbutton {
-    background-color: green;
-    border-radius: 5px;
-    font-weight: bold;
-    color: white;
-    font-size: 11px;
-    padding-top: 7px ;
-    padding-bottom: 7px ;
-    padding-right:  9px;
-    padding-left: 9px ;
-    margin-right: 4px;
-    margin-left: 4px;
-    text-transform: uppercase;
-
-}
-.hello  {
-    display: inline-flex;
-    position: relative;
-    justify-content: space-between;
-}
-
-.hello a {
-    position: absolute;
-    align-self: center;
-    text-transform: capitalize;
-    font-weight: bold;
-    color: white;
-    font-size: 12px;
-}
-.logoutbutton:hover {
-    background-color: lime;
-}
-
-input[type=text] {
-    width: 300px;
+    /* padding: 5px; */
+    opacity: .3;
+    width: 100%;
 }
 
 .container {
-   display: grid;
-   background-color: green;
-   height: 600px;
-   grid-template-columns: 150px 400px 300px;
-   padding-top: 10px;
-   justify-content: space-between;
-
-}
-
-.main {
-    padding-top: 10px;
-    padding-left: 5px;
-
-}
-
-#sidebar {
-    background-color: lightgreen;
-    border-radius: 10px;
-    position: relative;
-}
-
-#taskfield {
-    background-color: lightgreen;
-    border-radius: 20px;
-}
-
-#random {
-    background-color: lightgreen;
-    border-radius: 5px;
-}
-
-.submit {
-    background-color: green;
-    border-radius: 5px;
-    font-weight: bold;
-    color: white;
-    font-size: 11px;
-}
-
-.inputBar {
-    background-color: lightgray;
-    border-radius: 10px;
-}
-
-.imagesidebar {
-    height: 80px;
-    width: 80px;
-    position: absolute;
-    padding-bottom: 10px;
-}
-#imagediv {
-    padding-top: 10px;
-}
-span {
-    vertical-align: end;
-    color: yellow;
-    font-family: fantasy;
-
-}
-
-.lists {
-    padding-top: 70px;
-}
-
-.form{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex: row;
+    justify-content: space-between;
+    
 }
-
-.searchError {
-    display: flex;
-    justify-content: center;
-    color: red;
-    font-size: 20px;
-    border: solid 2mm red;
-    list-style-type: none;
+.sidebar {
+    
 }
-.tasks li {
-    list-style-type: none;
-
-}
-
-.taskname {
-    width: fit-content;
+.lists img {
+    width: 100px;
+    height: 100px;
 }

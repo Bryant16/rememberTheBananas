@@ -8,26 +8,28 @@ html(lang="en")
         link(rel='stylesheet' href='/stylesheets/listModal.css')
         title Remember the Bananas
     body
-        header
+        head
             div.masthead
                 div.burger
                     i(id="bars" class="fas fa-bars" href="#")
                 div.searchbar
                     //- form(method="post" action="/app/search" class="formSearch")
                     form.search
-                        button(id="search" class="fas fa-search" href="#" type="submit")
-                        input(id="textBar" type="text" class="inputBar" name="searchValue")
+                    button(id="search" class="fas fa-search" href="#" type="submit")
+                    input(id="textBar" class="fas fa-search" type="text" class="inputBar" placeholder="Search for a task")
+                    //i(id="search" class="fas fa-search" href="#")
                 div.hello
                     a Welcome to Remember the Bananas #{user.username}!
-                div.logout
                     button.logoutbutton() logout
+                div.logout
+                    <i class="fas fa-cloud"></i>
+                    <i class="far fa-bell"></i>
+                    <i class="fas fa-cogs"></i>
         main
             div(class="container")
                 div.main(id="sidebar")
-                    div(id="imagediv")
-                        span Remember the Bananas
-                        img(class="imagesidebar" src="/images/chimp.png")
                     ul.lists
+                        img(class="imagesidebar" src="/images/newLogo2.png")
                         form.formList
                         button.add(type="submit") add list
                         div#myModal.modal
@@ -39,13 +41,15 @@ html(lang="en")
                                     button.confirmAdd(type="submit") Add New List
                             div
                         div
-                            each list in allLists
-                                a(href=`/app/${list.id}`)= list.name
-                                br
+                            table
+                                thead 
+                                    td lists
+                                tbody
+                                    each list in allLists
+                                        tr
+                                            td
+                                                a(href=`/app/${list.id}`)= list.name
                 div.main(id='taskfield')
-                    div.toolbar-flex-container
-                        div.toolbar
-                            input(type="checkbox")
                     form.form
                         input(type="hidden" value=list.id name="listId")
                         input(class="inputBar" type="text" name="task")
@@ -53,10 +57,14 @@ html(lang="en")
                         button.submit(type='submit') add task
                         div
                             button.delete(type="submit") Delete
-                        ul.tasks
+                        div.tasks
                             if allTasks
-                                each task in allTasks.Tasks
-                                    <li class="taskLi"><input class="checkbox" type="checkbox" value=#{task.id}>#{task.name}</li>
+                                table
+                                    thead
+                                        td: <input class="checkbox" type="checkbox"/>
+                                    tbody
+                                        each task in allTasks.Tasks
+                                            tr(class="taskLi")=task.name
                 div.main(id="random")
                     ul.current-list
                         if list
