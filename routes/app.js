@@ -104,7 +104,7 @@ router.post('/lists', asyncHandler(async(req, res)=>{
     where:{userId: id}
   });
   res.redirect(`/app/${list.id}`)
-  //res.render('app', { allLists, list});
+ 
 }));
 
 router.post('/search', asyncHandler(async (req, res) => {

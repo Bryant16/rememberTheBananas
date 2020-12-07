@@ -44,9 +44,11 @@ body {
     display: flex;
     flex-direction: column;
     align-content: center;
-    justify-content: flex-end;
-    width: 15%;
+    justify-content: flex-start;
+    width: 20%;
+   
 }
+
 .search {
     display: flex;
     flex-direction: row;
@@ -55,17 +57,14 @@ body {
 #search {
     opacity: .3;
     border: none;
+    background: none;
     
 }
-.search:hover {
-    background-color: white ;
-    border-radius: 3px;
 
-}
 #textBar {
-    /* padding: 5px; */
+    padding: 5px;
     width: 100%;
-    opacity: .3;
+    opacity: .5;
     
 }
 /* sidebar */
@@ -83,6 +82,7 @@ body {
     text-align: left;
 }
 #sidebar thead tr th {
+    padding-bottom: 5px;
     border-bottom: 1px solid black;
 }
 
@@ -95,15 +95,19 @@ body {
     border-radius: 3px;
 
 }
-
+#sidebar i {
+    padding-top: 10px;
+    
+}
 .listButton {
-    /* padding: 8px; */
     border: none;
     font-weight: bold;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 100px;
     background-color: transparent;
     cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    align-self: flex-start;
 }
 .dropRow {
     position: relative;
