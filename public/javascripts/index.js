@@ -26,7 +26,10 @@
   }
 
     const completedTasks = async () => {
-      const res = await fetch()
+      const res = await fetch("/completed");
+      const body = await res.json();
+      if (!res.ok) throw Error("response error")
+      console.log(body);
     }
 
     // anonymous function

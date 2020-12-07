@@ -4,7 +4,7 @@ const db = require('../db/models');
 const { List, Task, User, ListandTask } = db;
 const { csrfProtection, asyncHandler } = require('../utils');
 const { requireAuth } = require('../auth');
-const { Op } = require("sequelize");
+const { Op, json } = require("sequelize");
 
 const router = express.Router();
 
@@ -30,7 +30,7 @@ router.get('/', csrfProtection, asyncHandler(async(req, res, next)=>{
     include: [Task]
   });
 
-    res.render('app', { list: allLists[0], user, allLists, allTasks: allLists[0] })
+  res.render('app', { list: allLists[0], user, allLists, allTasks: allLists[0] })
 }));
 
 router.get('/:id', asyncHandler(async(req, res, next) => {
@@ -109,7 +109,7 @@ router.post('/lists', asyncHandler(async(req, res)=>{
 
 // marked completed
 router.put("/tasks", asyncHandler(async (req, res) => {
-  console.log("HI")
+  // console.log("HI")
   const userId = parseInt(req.session.auth.userId, 10);
   console.log(JSON.stringify(req.body.array))
   const { array } = req.body
@@ -155,5 +155,20 @@ router.post('/search', asyncHandler(async (req, res) => {
 
    res.json({ allTasks })
 }))
+
+router.get('/completed', asyncHandler( async (req, res) => {
+  console.log("hi")
+  const id = parseInt(req.session.auth.userId, 10);
+  const completed = await Task.findAll({
+    where: { completed: true},
+    include: {
+    model: List,
+    Where: {
+      userId: id
+    }
+  }})
+  console.log(completed)
+  res.json({ completed })
+}));
 
 module.exports = router;
