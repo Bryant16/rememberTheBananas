@@ -13,7 +13,7 @@ module.exports = {
   },
 
   production: {
-    use_env_variable: 'postgres://qjrmxilmoqfonu:15d33ffbba900749fd50b7ce4d9b4e52e03a89572569c7d8d5a646205f08964f@ec2-54-84-98-18.compute-1.amazonaws.com:5432/d461oc9905jaf3',
+    use_env_variable: 'postgres://rxhxxqtwkzbkzq:20b89c6cd9a34f01cddaa5da54ae7957203d58ac16ad33278289488266b0eb90@ec2-3-95-124-37.compute-1.amazonaws.com:5432/d4pu9vbel6tqcu',
     dialect: 'postgres',
     seederStorage: 'sequelize',
   }
