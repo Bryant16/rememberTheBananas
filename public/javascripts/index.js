@@ -35,7 +35,7 @@
     // anonymous function
     (function() {
       numberOfTasks();
-      completedTasks();
+      // completedTasks();
     }());
 
 
@@ -95,7 +95,7 @@
     if (!array.length) return;
    
    
-      const res = fetch("tasks", {
+      const res = fetch("app/tasks", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ array })

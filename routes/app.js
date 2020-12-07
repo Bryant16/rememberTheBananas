@@ -127,7 +127,7 @@ router.put("/tasks", asyncHandler(async (req, res) => {
                 id: id
               }
     }})
-    // console.log(JSON.stringify(completedTask, null, 2))
+    console.log(JSON.stringify(completedTask, null, 2))
     completedTask.completed = true
     completedTask.save()
     console.log(completedTask);
