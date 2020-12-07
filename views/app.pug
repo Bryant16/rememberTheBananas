@@ -16,11 +16,13 @@ html(lang="en")
                 div.searchbar
                     //- form(method="post" action="/app/search" class="formSearch")
                     form.search
-                        button(id="search" class="fas fa-search" href="#" type="submit")
                         input(id="textBar" class="fas fa-search" type="text" class="inputBar" name="searchValue" placeholder="Search for a task")
-                    //i(id="search" class="fas fa-search" href="#")
+                        //- i(id="search" class="fas fa-search" href="#")
+                div.enterSearch
+                    button(id="search" class="fas fa-search" href="#" type="submit")
                 div.hello
                     a Welcome to Remember the Bananas #{user.username}!
+                div.loggingOutButton
                     button.logoutbutton: i(class="fas fa-sign-out-alt")
                 div.logout
                     <i class="fas fa-cloud"></i>
@@ -29,41 +31,41 @@ html(lang="en")
         main
             div(class="container")
                 div.main(id="sidebar")
-                        <img class="imagesidebar" src="/images/newLogo2.png">
-                            table
-                                thead
-                                    tr
-                                        th <i class="fas fa-angle-right"></i>All tasks
-                                    tr
-                                        th <i class="fas fa-angle-right"></i>lists
-                                        th
-                                            button.add(type="submit") <i class="fas fa-plus"></i>
-                                    tr
-                                        th <i class="fas fa-angle-right"></i>Favorites
-                                    tr
-                                        th <i class="fas fa-angle-right"></i>Smart Lists
-                                    tr
-                                        th <i class="fas fa-angle-right"></i>Contacts
-                                    tr
-                                        th <i class="fas fa-angle-right"></i>Tags
-                                    tr
-                                        th <i class="fas fa-angle-right"></i>Locations
-                                tbody
-                                    each list in allLists
-                                        tr
-                                            td
-                                                a(href=`/app/${list.id}`)= list.name
-                        //- div
-                        //-     table
-                        //-         thead
-                        //-             tr
-                        //-                 th
-                        //-         tbody
-                        //-             tr
-                        //-                 td All Tasks
-                        //-                 td Contacts
-                        //-                 td Tags
-                        //-                 td Locations
+                    <img class="imagesidebar" src="/images/newLogo2.png">
+                    table
+                        thead
+                            tr
+                                th <i class="fas fa-angle-right"></i>All tasks
+                            tr
+                                th <i class="fas fa-angle-right"></i>lists
+                                th
+                                    button.add(type="submit") <i class="fas fa-plus"></i>
+                            tr
+                                th <i class="fas fa-angle-right"></i>Favorites
+                            tr
+                                th <i class="fas fa-angle-right"></i>Smart Lists
+                            tr
+                                th <i class="fas fa-angle-right"></i>Contacts
+                            tr
+                                th <i class="fas fa-angle-right"></i>Tags
+                            tr
+                                th <i class="fas fa-angle-right"></i>Locations
+                        tbody
+                            each list in allLists
+                                tr
+                                    td
+                                        a(href=`/app/${list.id}`)= list.name
+                    //- div
+                    //-     table
+                    //-         thead
+                    //-             tr
+                    //-                 th
+                    //-         tbody
+                    //-             tr
+                    //-                 td All Tasks
+                    //-                 td Contacts
+                    //-                 td Tags
+                    //-                 td Locations
                 div.main(id='taskfield')
                     div#myModal.modal
                         div.modal-content
