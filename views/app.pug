@@ -34,17 +34,18 @@ html(lang="en")
                                 thead
                                     tr
                                         th <i class="fas fa-angle-right"></i>All tasks
-                                    tr
-                                        th <i class="fas fa-angle-right"></i>lists
-                                        th
-                                            button.add(type="submit") <i class="fas fa-plus"></i>
-                                            div#myModal.modal
-                                                div.modal-content
-                                                    span.close &times
-                                                    p Add Your List..
-                                                    form(method="post" action="/app/lists")
-                                                        input(class="textBar" type="text" name="list")
-                                                        button.confirmAdd(type="submit") Add New List
+                                    tr.dropRow
+                                        th <i class="fas fa-angle-right"></i><button class="listButton"> Lists</button>
+                                            div(class="dropdownmenu" )
+                                                    each list in allLists
+                                                        <a href="/app/#{list.id}"> #{list.name} </li>
+                                        div#myModal.modal
+                                            div.modal-content
+                                                span.close &times
+                                                p Add Your List..
+                                                form(method="post" action="/app/lists")
+                                                    input(class="textBar" type="text" name="list")
+                                                    button.confirmAdd(type="submit") Add New List
                                     tr
                                         th <i class="fas fa-angle-right"></i>Favorites
                                     tr
@@ -55,28 +56,19 @@ html(lang="en")
                                         th <i class="fas fa-angle-right"></i>Tags
                                     tr
                                         th <i class="fas fa-angle-right"></i>Locations
-                                tbody
-                                    each list in allLists
-                                        tr
-                                            td
-                                                a(href=`/app/${list.id}`)= list.name
-                        //- div
-                        //-     table
-                        //-         thead
-                        //-             tr
-                        //-                 th
-                        //-         tbody
-                        //-             tr
-                        //-                 td All Tasks
-                        //-                 td Contacts
-                        //-                 td Tags
-                        //-                 td Locations
+                                thead
+                                    tr 
+                                            
+                        div 
+                            button.add(type="submit") <i class="fas fa-plus"></i>               
+                        
                 div.main(id='taskfield')
                     div.tasks
                         table.contentTable
                             thead
                                 tr
                                     th
+                                        img(class="banimg" src="/images/banana.png")
                                     th
                                         form.form
                                             <input type="hidden" value=#{list.id} name="listId">
@@ -92,14 +84,6 @@ html(lang="en")
                                                 td(class="taskListed")=task.name
                                                 td
                                 
-                        //- else
-                        //-     table.contentTable
-                        //-         thead
-                        //-             tr
-                        //-                 th check
-                        //-                 th task
-                        //-                 th
-                        //-         tbody.taskRow
                 div.main(id="random")
                     ul.current-list
                         if list
@@ -110,18 +94,6 @@ html(lang="en")
                                 li Number of Tasks
                         div.share
                             button: i(class="far fa-user")  Share
-
-                    //- div.main(id="edit-nav")
-                    //-     div
-                    //-         if !selectedItems
-
-                    //-             div
-                    //-                 input(placeholder="${selectedItem[0]}")
-                    //-                 button(type="submit" class="fas fa-edit")
-                    //-             div
-                    //-                 p Notes
-                    //-             div
-                    //-                 textarea(name="notes", cols="30", rows="10")
 
         script(src="/javascripts/index.js" type="module")
         script(src="/javascripts/list.js" type="module")
