@@ -80,18 +80,19 @@ html(lang="en")
                                     th
                                         form.form
                                             <input type="hidden" value=#{list.id} name="listId">
-                                            <input class="inputBar" type="text" name="task" placeholder="Add a task...">
+                                            <input id="input" class="inputBar" type="text" name="task" placeholder="Add a task...">
                                     th
                                         button.submit(type='submit') Add
                                         button.delete(type="submit") Delete
+                                        button.completed(type="submit") Completed
                                 tbody.taskRow
                                     if allTasks
                                         each task in allTasks.Tasks
                                             tr.taskRows
                                                 td.check: <input class="checkbox" type="checkbox"/>
                                                 td(class="taskListed")=task.name
-                                                td
-                                
+                                                td: input(type="hidden" value=task.id)
+                            
                         //- else
                         //-     table.contentTable
                         //-         thead
@@ -108,6 +109,8 @@ html(lang="en")
                         div.taskCount
                             h3(id='task-number')
                                 li Number of Tasks
+                            h3(id='completed-number')
+                                li  Completed Tasks
                         div.share
                             button: i(class="far fa-user")  Share
 

@@ -25,16 +25,23 @@
       div.appendChild(li)
   }
 
-    numberOfTasks();
+    const completedTasks = async () => {
+      const res = await fetch()
+    }
+
+    // anonymous function
+    (function() {
+      numberOfTasks();
+      completedTasks();
+    }());
 
 
     addTask.addEventListener("click", async (event)=>{
-    console.log("hi")
+    // console.log("hi")
     event.preventDefault();
     const formData = new FormData(form);
     const value = formData.get("task");
-      const listId = formData.get("listId");
-      const searchValue = formData.get("searchValue")
+    const listId = formData.get("listId");
 
     const res = await fetch('/app/tasks', {
       method:"POST",
@@ -56,10 +63,44 @@
     } catch (e) {
       console.log(e)
     }
+
     numberOfTasks();
 
   });
 
+  // completed functionality
+  const completedButton = document.querySelector(".completed");
+  completedButton.addEventListener("click", (e => {
+    e.preventDefault();
+    const taskItems = document.querySelectorAll(".taskRows")
+    const array = new Array()
+
+    taskItems.forEach(taskInfo => {
+      console.log(taskInfo.childNodes)
+      const { 0: checkBox, 1: text, 2: value } = taskInfo.childNodes;
+      const { 0: isChecked } = checkBox.childNodes;
+      const stringNumber = (value.firstChild.defaultValue)
+      const id = parseInt(stringNumber, 10)
+      
+      if (isChecked.checked) {
+        const task = text.innerHTML
+        array.push({ task, id });
+    }
+
+    });
+
+    if (!array.length) return;
+   
+   
+      const res = fetch("tasks", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ array })
+    }).catch(e => console.error(e))
+
+  }))
+
+  // delete functionality
   deleteButton.addEventListener("click", async (event) => {
     event.preventDefault();
     let allTasks = [];
@@ -81,32 +122,14 @@
     })
     
 
-    const res = await fetch('tasks', {
-      method:"DELETE",
-      headers:{"Content-Type": "application/json"},
-      body: JSON.stringify({ selectedItems: selectedTasks })
-    });
+    // const res = await fetch('tasks', {
+    //   method:"DELETE",
+    //   headers:{"Content-Type": "application/json"},
+    //   body: JSON.stringify({ selectedItems: selectedTasks })
+    // });
   })
 
-  // editButton.addEventListener("click", async (event) => {
-  //   event.preventDefault();
-  //   let allTasks = [];
-  //   let selectedTasks = [];
-
-  //   taskRows.forEach(taskSelected => {
-  //     allTasks.push(taskSelected.innerHTML);
-  //   })
-
-  //   checkBoxes.forEach( (checkbox, i) => {
-  //     if (checkbox.checked) {
-  //       selectedTasks.push(allTasks[i]);
-  //       taskRows[i].style.display = "none";
-  //       checkBoxes[i].style.display = "none";
-
-  //     }
-  //   })
-  //   console.log(selectedTasks)
-  // })
+ 
 
     searchButton.addEventListener("click", async (event) => {
       event.preventDefault();
@@ -154,7 +177,7 @@
       }
 
       numberOfTasks();
-    });
+    })
 
 
     logoutButton.addEventListener("click", async (event) => {
@@ -167,4 +190,4 @@
       window.location.reload();
     })
 
-})
+});

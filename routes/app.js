@@ -107,6 +107,34 @@ router.post('/lists', asyncHandler(async(req, res)=>{
   res.render('app', { allLists, list});
 }));
 
+// marked completed
+router.put("/tasks", asyncHandler(async (req, res) => {
+  console.log("HI")
+  const userId = parseInt(req.session.auth.userId, 10);
+  console.log(JSON.stringify(req.body.array))
+  const { array } = req.body
+  
+  array.forEach( async (completedItem) => {
+    const  { task, id } = completedItem;
+    const completedTask = await List.findOne({
+      where: {
+        userId: userId,
+      },
+              include: {
+              model: Task,
+              where: {
+                name: task,
+                id: id
+              }
+    }})
+    // console.log(JSON.stringify(completedTask, null, 2))
+    completedTask.completed = true
+    completedTask.save()
+    console.log(completedTask);
+  })
+
+}));
+
 router.post('/search', asyncHandler(async (req, res) => {
   const value = req.body.searchTerm;
   const id = parseInt(req.session.auth.userId, 10);
