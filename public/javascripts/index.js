@@ -78,7 +78,7 @@ const logoutButton = document.querySelector(".logoutbutton");
 
       }
     })
-    console.log(selectedTasks)
+    
 
     const res = await fetch('tasks', {
       method:"DELETE",
