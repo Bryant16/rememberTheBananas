@@ -16,8 +16,8 @@ html(lang="en")
                 div.searchbar
                     //- form(method="post" action="/app/search" class="formSearch")
                     form.search
-                    button(id="search" class="fas fa-search" href="#" type="submit")
-                    input(id="textBar" class="fas fa-search" type="text" class="inputBar" placeholder="Search for a task")
+                        button(id="search" class="fas fa-search" href="#" type="submit")
+                        input(id="textBar" class="fas fa-search" type="text" class="inputBar" name="searchValue" placeholder="Search for a task")
                     //i(id="search" class="fas fa-search" href="#")
                 div.hello
                     a Welcome to Remember the Bananas #{user.username}!
@@ -85,12 +85,13 @@ html(lang="en")
                                         button.submit(type='submit') Add
                                         button.delete(type="submit") Delete
                                 tbody.taskRow
-                                if allTasks
-                                    each task in allTasks.Tasks
-                                        tr
-                                            td.check: <input class="checkbox" type="checkbox"/>
-                                            td(class="taskListed")=task.name
-                                            td
+                                    if allTasks
+                                        each task in allTasks.Tasks
+                                            tr.taskRows
+                                                td.check: <input class="checkbox" type="checkbox"/>
+                                                td(class="taskListed")=task.name
+                                                td
+                                
                         //- else
                         //-     table.contentTable
                         //-         thead

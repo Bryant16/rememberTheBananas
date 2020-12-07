@@ -112,7 +112,7 @@ const logoutButton = document.querySelector(".logoutbutton");
       const formData = new FormData(formSearch);
 
       const searchValue = formData.get("searchValue");
-
+      console.log(searchValue)
       const res = await fetch("/app/search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -120,24 +120,51 @@ const logoutButton = document.querySelector(".logoutbutton");
       });
 
       const { allTasks } = await res.json();
-      const parent = document.querySelector(".tasks")
-
+      //console.log(allTasks)
+      //const parent = document.querySelector(".tasks")
+      function removeAllChildNodes(parent) {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+    }
       if (allTasks.length) {
-        parent.innerHTML = ""
+       
+        const tbody = document.querySelector('.taskRow');
+        
+        removeAllChildNodes(tbody)
+        
         allTasks.map(task => {
-          const child = document.createElement("li");
-          child.setAttribute("class", "taskListed");
-          child.innerHTML = task.name;
-          parent.appendChild(child);
+          const tr = document.createElement('tr');
+          const tdCheck = document.createElement('td');
+          const tdTask = document.createElement('td');
+          const emptyTd = document.createElement('td');
+          tdTask.setAttribute("class", "taskListed");
+          tdCheck.innerHTML = `<input class="checkbox" type="checkbox">`;
+          tdTask.innerHTML = task.name
+          
+          const body = document.querySelector('tbody');
+          body.style.display = 'none'
+          tbody.appendChild(tr);
+          tr.appendChild(tdCheck);
+          tr.appendChild(tdTask);
+          tr.appendChild(emptyTd);
           numberOfTasks();
         })
 
       } else {
-        parent.innerHTML = "";
-        const child = document.createElement("li");
-        child.setAttribute("class", "searchError")
-        child.innerText = "NO MATCHES FOUND!"
-        parent.appendChild(child);
+        const tbody = document.querySelector('.taskRow');
+        removeAllChildNodes(tbody)
+        const tr = document.createElement('tr');
+        const tdCheck = document.createElement('td');
+        const tdTask = document.createElement('td');
+        const emptyTd = document.createElement('td');
+        //const child = document.createElement("li");
+        tdTask.setAttribute("class", "searchError")
+        tdTask.innerText = "NO MATCHES FOUND!"
+        tbody.appendChild(tr);
+        tr.appendChild(tdCheck)
+        tr.appendChild(tdTask)
+        tr.appendChild(emptyTd)
         numberOfTasks();
       }
     });
