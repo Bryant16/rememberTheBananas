@@ -68,7 +68,7 @@ const logoutButton = document.querySelector(".logoutbutton");
       allTasks.push(taskSelected.innerHTML);
     })
 
-    // console.log(taskRows)
+   
 
     checkBoxes.forEach( (checkbox, i) => {
       if (checkbox.checked) {
@@ -85,12 +85,15 @@ const logoutButton = document.querySelector(".logoutbutton");
       headers:{"Content-Type": "application/json"},
       body: JSON.stringify({ selectedItems: selectedTasks })
     });
+    await res.json()
+    window.location.reload();
   })
 
  
 
     searchButton.addEventListener("click", async (event) => {
       event.preventDefault();
+      window.location.reload();
       const formData = new FormData(formSearch);
 
       const searchValue = formData.get("searchValue");
@@ -102,8 +105,7 @@ const logoutButton = document.querySelector(".logoutbutton");
       });
 
       const { allTasks } = await res.json();
-      //console.log(allTasks)
-      //const parent = document.querySelector(".tasks")
+   
       function removeAllChildNodes(parent) {
         while (parent.firstChild) {
             parent.removeChild(parent.firstChild);
@@ -124,8 +126,7 @@ const logoutButton = document.querySelector(".logoutbutton");
           tdCheck.innerHTML = `<input class="checkbox" type="checkbox">`;
           tdTask.innerHTML = task.name
           
-          // const body = document.querySelector('tbody');
-          // body.style.display = 'none'
+       
           tbody.appendChild(tr);
           tr.appendChild(tdCheck);
           tr.appendChild(tdTask);
