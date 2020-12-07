@@ -160,7 +160,5 @@ const logoutButton = document.querySelector(".logoutbutton");
       window.location.reload();
     })
 
-    dropDown.addEventListener('click', ()=>{
-      
-    })
+   
 })

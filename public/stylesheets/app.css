@@ -196,9 +196,9 @@ body {
     background-color: #f3f3f3;
 }
 .banimg {
-    position: absolute;
-    width: 39px;
-    height: 39px;
+    position: relative;
+    width: 30px;
+    height: 30px;
 }
 
 /* side bar right */

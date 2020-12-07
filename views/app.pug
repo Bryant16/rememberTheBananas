@@ -39,13 +39,13 @@ html(lang="en")
                                             div(class="dropdownmenu" )
                                                     each list in allLists
                                                         <a href="/app/#{list.id}"> #{list.name} </li>
-                                            div#myModal.modal
-                                                div.modal-content
-                                                    span.close &times
-                                                    p Add Your List..
-                                                    form(method="post" action="/app/lists")
-                                                        input(class="textBar" type="text" name="list")
-                                                        button.confirmAdd(type="submit") Add New List
+                                        div#myModal.modal
+                                            div.modal-content
+                                                span.close &times
+                                                p Add Your List..
+                                                form(method="post" action="/app/lists")
+                                                    input(class="textBar" type="text" name="list")
+                                                    button.confirmAdd(type="submit") Add New List
                                     tr
                                         th <i class="fas fa-angle-right"></i>Favorites
                                     tr
@@ -57,9 +57,8 @@ html(lang="en")
                                     tr
                                         th <i class="fas fa-angle-right"></i>Locations
                                 thead
-                                    tr
-                                        th 
-                                            //button.add(type="submit") <i class="fas fa-plus"></i>
+                                    tr 
+                                            
                         div 
                             button.add(type="submit") <i class="fas fa-plus"></i>               
                         //- div
@@ -79,6 +78,7 @@ html(lang="en")
                             thead
                                 tr
                                     th
+                                        img(class="banimg" src="/images/banana.png")
                                     th
                                         form.form
                                             <input type="hidden" value=#{list.id} name="listId">
@@ -91,7 +91,6 @@ html(lang="en")
                                         each task in allTasks.Tasks
                                             tr.taskRows
                                                 td.check: <input class="checkbox" type="checkbox"/>
-                                                img(class="banimg" src="/images/banana.png")
                                                 td(class="taskListed")=task.name
                                                 td
                                 
