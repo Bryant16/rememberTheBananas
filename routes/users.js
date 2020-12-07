@@ -74,11 +74,9 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, 
     });
 
   if (user !== null) {
-    console.log(`user not null`)
     const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
 
     if (passwordMatch) {
-      console.log(passwordMatch)
       loginUser(req, res, user)
       return res.redirect('/app')
     }
