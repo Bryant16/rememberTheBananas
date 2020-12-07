@@ -5,7 +5,7 @@
   const form = document.querySelector(".form");
   const dropdown = document.querySelector(".dropdown");
   const searchButton = document.querySelector(".fa-search");
-const logoutButton = document.querySelector(".logoutbutton");
+  const logoutButton = document.querySelector(".logoutbutton");
 
   const formSearch = document.querySelector(".search");
   const deleteButton = document.querySelector(".delete");
@@ -29,6 +29,7 @@ const logoutButton = document.querySelector(".logoutbutton");
 
 
     addTask.addEventListener("click", async (event)=>{
+    console.log("hi")
     event.preventDefault();
     const formData = new FormData(form);
     const value = formData.get("task");
@@ -120,20 +121,12 @@ const logoutButton = document.querySelector(".logoutbutton");
       });
 
       const { allTasks } = await res.json();
-      //console.log(allTasks)
-      //const parent = document.querySelector(".tasks")
-      function removeAllChildNodes(parent) {
-        while (parent.firstChild) {
-            parent.removeChild(parent.firstChild);
-        }
-    }
+     
+      const tbody = document.querySelector('.taskRow');
+      tbody.innerHTML = "";
+
       if (allTasks.length) {
-       
-        const tbody = document.querySelector('.taskRow');
-        
-        removeAllChildNodes(tbody)
-        
-        allTasks.map(task => {
+        allTasks.forEach(task => {
           const tr = document.createElement('tr');
           const tdCheck = document.createElement('td');
           const tdTask = document.createElement('td');
@@ -141,33 +134,29 @@ const logoutButton = document.querySelector(".logoutbutton");
           tdTask.setAttribute("class", "taskListed");
           tdCheck.innerHTML = `<input class="checkbox" type="checkbox">`;
           tdTask.innerHTML = task.name
-          
-          const body = document.querySelector('tbody');
-          body.style.display = 'none'
           tbody.appendChild(tr);
           tr.appendChild(tdCheck);
           tr.appendChild(tdTask);
           tr.appendChild(emptyTd);
-          numberOfTasks();
         })
 
       } else {
-        const tbody = document.querySelector('.taskRow');
-        removeAllChildNodes(tbody)
         const tr = document.createElement('tr');
         const tdCheck = document.createElement('td');
         const tdTask = document.createElement('td');
         const emptyTd = document.createElement('td');
-        //const child = document.createElement("li");
         tdTask.setAttribute("class", "searchError")
         tdTask.innerText = "NO MATCHES FOUND!"
         tbody.appendChild(tr);
         tr.appendChild(tdCheck)
         tr.appendChild(tdTask)
         tr.appendChild(emptyTd)
-        numberOfTasks();
       }
+
+      numberOfTasks();
     });
+
+
     logoutButton.addEventListener("click", async (event) => {
       await fetch('/users/logout', {
         method: "POST",
