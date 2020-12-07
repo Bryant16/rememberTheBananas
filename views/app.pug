@@ -38,13 +38,6 @@ html(lang="en")
                                         th <i class="fas fa-angle-right"></i>lists
                                         th
                                             button.add(type="submit") <i class="fas fa-plus"></i>
-                                            div#myModal.modal
-                                                div.modal-content
-                                                    span.close &times
-                                                    p Add Your List..
-                                                    form(method="post" action="/app/lists")
-                                                        input(class="textBar" type="text" name="list")
-                                                        button.confirmAdd(type="submit") Add New List
                                     tr
                                         th <i class="fas fa-angle-right"></i>Favorites
                                     tr
@@ -72,6 +65,13 @@ html(lang="en")
                         //-                 td Tags
                         //-                 td Locations
                 div.main(id='taskfield')
+                    div#myModal.modal
+                        div.modal-content
+                            span.close &times
+                            p Add Your List..
+                            form(method="post" action="/app/lists")
+                                input(class="textBar" type="text" name="list")
+                                button.confirmAdd(type="submit") Add New List
                     div.tasks
                         table.contentTable
                             thead
@@ -91,7 +91,7 @@ html(lang="en")
                                                 td.check: <input class="checkbox" type="checkbox"/>
                                                 td(class="taskListed")=task.name
                                                 td
-                                
+
                         //- else
                         //-     table.contentTable
                         //-         thead
