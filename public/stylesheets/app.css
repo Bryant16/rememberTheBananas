@@ -18,6 +18,7 @@ body {
     color: white;
 
 }
+
 .logoutbutton   {
     opacity: .5;
     color: white;
@@ -41,30 +42,37 @@ body {
 
 .searchbar {
     display: flex;
-    flex-direction: row;
-    align-content: flex-start;
-    border: 1px solid black;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-end;
     width: 15%;
+}
+.search {
+    display: flex;
+    flex-direction: row;
+    
 }
 #search {
     opacity: .3;
     border: none;
-
+    
 }
-.searchbar:hover {
+.search:hover {
     background-color: white ;
+    border-radius: 3px;
 
 }
 #textBar {
     /* padding: 5px; */
-    opacity: .3;
     width: 100%;
+    opacity: .3;
+    
 }
 /* sidebar */
 .container {
     display: flex;
     flex: row;
-    min-height: 600px;
+    min-height: 700px;
     background-color: rgb(21, 175, 21);
 }
 #sidebar {
@@ -74,17 +82,58 @@ body {
 #sidebar thead {
     text-align: left;
 }
-
+#sidebar thead tr th {
+    border-bottom: 1px solid black;
+}
 
 .add,
 .fa-plus {
     background: none;
-    opacity: .3;
+    border: none;
+    opacity: .5;
     background-color: green;
     border-radius: 3px;
 
 }
 
+.listButton {
+    /* padding: 8px; */
+    border: none;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.dropRow {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    
+}
+.dropdownmenu {
+    display: none;
+    position: absolute;
+    background-color: green;
+    min-width: 100px;
+}
+.dropdownmenu a:hover {
+    background-color: white;
+    color: black;
+}
+.dropdownmenu a {
+    color: white;
+    
+}
+.dropRow:hover .dropdownmenu {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.dropRow:hover .listButton {
+    background-color: transparent;
+}
 
 /* tasks */
 #taskfield {
@@ -146,7 +195,11 @@ body {
 .contentTable tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
 }
-
+.banimg {
+    position: absolute;
+    width: 39px;
+    height: 39px;
+}
 
 /* side bar right */
 #random {

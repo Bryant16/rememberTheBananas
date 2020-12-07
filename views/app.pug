@@ -34,10 +34,11 @@ html(lang="en")
                                 thead
                                     tr
                                         th <i class="fas fa-angle-right"></i>All tasks
-                                    tr
-                                        th <i class="fas fa-angle-right"></i>lists
-                                        th
-                                            button.add(type="submit") <i class="fas fa-plus"></i>
+                                    tr.dropRow
+                                        th <i class="fas fa-angle-right"></i><button class="listButton"> Lists</button>
+                                            div(class="dropdownmenu" )
+                                                    each list in allLists
+                                                        <a href="/app/#{list.id}"> #{list.name} </li>
                                             div#myModal.modal
                                                 div.modal-content
                                                     span.close &times
@@ -55,11 +56,12 @@ html(lang="en")
                                         th <i class="fas fa-angle-right"></i>Tags
                                     tr
                                         th <i class="fas fa-angle-right"></i>Locations
-                                tbody
-                                    each list in allLists
-                                        tr
-                                            td
-                                                a(href=`/app/${list.id}`)= list.name
+                                thead
+                                    tr
+                                        th 
+                                            //button.add(type="submit") <i class="fas fa-plus"></i>
+                        div 
+                            button.add(type="submit") <i class="fas fa-plus"></i>               
                         //- div
                         //-     table
                         //-         thead
@@ -89,6 +91,7 @@ html(lang="en")
                                         each task in allTasks.Tasks
                                             tr.taskRows
                                                 td.check: <input class="checkbox" type="checkbox"/>
+                                                img(class="banimg" src="/images/banana.png")
                                                 td(class="taskListed")=task.name
                                                 td
                                 

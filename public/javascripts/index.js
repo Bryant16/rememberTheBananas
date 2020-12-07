@@ -6,7 +6,7 @@
   const dropdown = document.querySelector(".dropdown");
   const searchButton = document.querySelector(".fa-search");
 const logoutButton = document.querySelector(".logoutbutton");
-
+  const dropDown = document.querySelector('.dropdownmenu')
   const formSearch = document.querySelector(".search");
   const deleteButton = document.querySelector(".delete");
   const taskRows = document.querySelectorAll(".taskListed");
@@ -87,32 +87,14 @@ const logoutButton = document.querySelector(".logoutbutton");
     });
   })
 
-  // editButton.addEventListener("click", async (event) => {
-  //   event.preventDefault();
-  //   let allTasks = [];
-  //   let selectedTasks = [];
-
-  //   taskRows.forEach(taskSelected => {
-  //     allTasks.push(taskSelected.innerHTML);
-  //   })
-
-  //   checkBoxes.forEach( (checkbox, i) => {
-  //     if (checkbox.checked) {
-  //       selectedTasks.push(allTasks[i]);
-  //       taskRows[i].style.display = "none";
-  //       checkBoxes[i].style.display = "none";
-
-  //     }
-  //   })
-  //   console.log(selectedTasks)
-  // })
+ 
 
     searchButton.addEventListener("click", async (event) => {
       event.preventDefault();
       const formData = new FormData(formSearch);
 
       const searchValue = formData.get("searchValue");
-      console.log(searchValue)
+      
       const res = await fetch("/app/search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -142,8 +124,8 @@ const logoutButton = document.querySelector(".logoutbutton");
           tdCheck.innerHTML = `<input class="checkbox" type="checkbox">`;
           tdTask.innerHTML = task.name
           
-          const body = document.querySelector('tbody');
-          body.style.display = 'none'
+          // const body = document.querySelector('tbody');
+          // body.style.display = 'none'
           tbody.appendChild(tr);
           tr.appendChild(tdCheck);
           tr.appendChild(tdTask);
@@ -178,4 +160,7 @@ const logoutButton = document.querySelector(".logoutbutton");
       window.location.reload();
     })
 
+    dropDown.addEventListener('click', ()=>{
+      
+    })
 })

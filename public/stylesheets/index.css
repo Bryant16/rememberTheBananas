@@ -10,7 +10,7 @@
     grid-auto-flow: column;
     background-color: green;
     grid-gap: 20px;
-    padding-left: 20px;
+    padding-left: 100px;
     padding-right: 20px;
     position: fixed;
     
@@ -36,10 +36,13 @@
     grid-gap: 30px;
     color: lightgray;
     font-family: "Museao Sans";
-    font-weight: bold;
-    font-size: 1.2rem;
+    
+    font-size: 1.3rem;
 }
-
+.links a {
+    
+    font-weight: bold;
+}
 a {
     text-decoration: none;
 }
