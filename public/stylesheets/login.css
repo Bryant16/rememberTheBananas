@@ -46,7 +46,7 @@ body {
 
 .right {
     position: relative;
-    background-color: yellow;
+    background-color:rgb(240, 240, 37, .8);
     width: 50%;
     padding: 0 20px;
 }

@@ -73,25 +73,32 @@ router.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
 }));
 
 router.delete('/tasks', asyncHandler(async (req, res) => {
-  const id = parseInt(req.params.id, 10);
+
   const itemsToDelete = req.body.selectedItems;
 
-  console.log("HIIIII")
-  // const taskIds = await Task.findAll({
-  //   where: {
+  while(itemsToDelete.length) {
+    const task = await Task.findAll({
+      where:itemsToDelete[itemsToDelete.length-1]
+    })
 
-  //   }
-  // })
-  await ListandTask.destroy({
-    where: {
-      taskId: itemsToDelete
-    }
-  })
-  const task = await Task.destroy({
-    where: {
-      id: itemsToDelete
-    }
-  })
+    await ListandTask.destroy({
+      where: {
+        taskId: task.id
+      }
+    })
+
+    await Task.destroy({
+      where: {
+        taskId: task.id
+      }
+    })
+
+    itemsToDelete.pop();
+  }
+
+    
+  console.log("HIIIII")
+
   if (task) {
     res.json({ message: "success!" });
   }
@@ -103,8 +110,8 @@ router.post('/lists', asyncHandler(async(req, res)=>{
   const allLists = await List.findAll({
     where:{userId: id}
   });
+  res.redirect(`/app/${list.id}`)
 
-  res.render('app', { allLists, list});
 }));
 
 router.post('/search', asyncHandler(async (req, res) => {
