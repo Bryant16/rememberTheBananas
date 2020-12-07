@@ -48,32 +48,32 @@ body {
     align-content: center;
     justify-content: flex-start;
     width: 20%;
-   
+
 }
 
 .search {
     display: flex;
     flex-direction: row;
-    
+
 }
 #search {
     opacity: .3;
     border: none;
     background: none;
-    
+
 }
 
 #textBar {
     padding: 5px;
     width: 100%;
     opacity: .5;
-    
+
 }
 /* sidebar */
 .container {
     display: flex;
     flex: row;
-    min-height: 700px;
+    min-height: 100vh;
     background-color: rgb(21, 175, 21);
 }
 #sidebar {
@@ -99,7 +99,7 @@ body {
 }
 #sidebar i {
     padding-top: 10px;
-    
+
 }
 .listButton {
     border: none;
@@ -115,7 +115,7 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    
+
 }
 .dropdownmenu {
     display: none;
@@ -129,7 +129,7 @@ body {
 }
 .dropdownmenu a {
     color: white;
-    
+
 }
 .dropRow:hover .dropdownmenu {
     display: flex;
