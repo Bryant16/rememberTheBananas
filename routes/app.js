@@ -50,9 +50,6 @@ router.post('/tasks', asyncHandler(async (req,res, next) => {
 
   const id = parseInt(req.body.listId, 10);
 
-  // let selectedItems = req.body.selectedDeletedTasks;
-  // console.log('DELETED:',selectedDeletedTasks)
-
   const list = await List.findByPk(id, {
     include: [Task]
   });
@@ -73,36 +70,30 @@ router.get('/lists:id(\\d+)', asyncHandler(async(req, res)=>{
 }));
 
 router.delete('/tasks', asyncHandler(async (req, res) => {
+    const itemsToDelete = req.body.selectedItems;
 
-  const itemsToDelete = req.body.selectedItems;
+    let taskName = itemsToDelete[itemsToDelete.length-1]
+    while(itemsToDelete.length) {
+      const task = await Task.findAll({
+        where:{name: taskName}
+      })
 
-  while(itemsToDelete.length) {
-    const task = await Task.findAll({
-      where:itemsToDelete[itemsToDelete.length-1]
-    })
+      await ListandTask.destroy({
+        where: {
+          taskId: task[0].id
+        }
+      })
+      await Task.destroy({
+        where: {
+          id: task[0].id
+        }
+      })
+      itemsToDelete.pop();
+    }
+    res.json()
 
-    await ListandTask.destroy({
-      where: {
-        taskId: task.id
-      }
-    })
+  }))
 
-    await Task.destroy({
-      where: {
-        taskId: task.id
-      }
-    })
-
-    itemsToDelete.pop();
-  }
-
-    
-  console.log("HIIIII")
-
-  if (task) {
-    res.json({ message: "success!" });
-  }
-}))
 
 router.post('/lists', asyncHandler(async(req, res)=>{
   const id = parseInt(req.session.auth.userId, 10);
