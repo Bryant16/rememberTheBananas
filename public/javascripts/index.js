@@ -6,6 +6,7 @@
   const dropdown = document.querySelector(".dropdown");
   const searchButton = document.querySelector(".fa-search");
 const logoutButton = document.querySelector(".logoutbutton");
+const demoUser = document.getElementById("demo_user");
   const dropDown = document.querySelector('.dropdownmenu')
   const formSearch = document.querySelector(".search");
   const deleteButton = document.querySelector(".delete");
@@ -159,6 +160,7 @@ const logoutButton = document.querySelector(".logoutbutton");
       });
       window.location.reload();
     })
+ 
 
    
 })

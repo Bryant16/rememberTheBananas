@@ -86,6 +86,7 @@ body {
     font-weight: bold;
 }
 
+.demo,
 .label {
     width: 100%;
     display: block;
@@ -108,6 +109,7 @@ body {
     margin-right: 20px;
 }
 
+.demo,
 div > button.label {
     width: 100%;
     color: white;
@@ -118,7 +120,7 @@ div > button.label {
     border-color: transparent;
     cursor: pointer;
 }
-
+.demo:hover,
 div > button.label:hover {
     background-image: linear-gradient(45deg, #FFCF00, #2ba735);
     transition:slidebg 5s linear infinite;

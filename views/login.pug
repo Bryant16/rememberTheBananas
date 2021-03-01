@@ -35,6 +35,11 @@ html
 
                     div
                         button.label(type="submit") Log in
+            form(action="/users/login" method="post")
+                input(name="_csrf" value=token type="hidden")
+                input(name='username' value='demo_user' type='hidden')
+                input(name='password' value='Password1*' type='hidden')
+                button.demo(type='submit') Demo User
 
 // csrfToken()
 // form username and password and email
