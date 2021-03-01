@@ -1,4 +1,4 @@
-body {
+body, html {
     margin: 0;
     padding: 0;
     font-family: 'Calibri', 'Trebuchet MS', sans-serif;
@@ -6,9 +6,14 @@ body {
 }
 /* nav bar */
 .masthead {
-    display: flex;
+    display: grid;
+    grid-template: 20px 20px 30px / repeat(8, 1fr);
+    /* grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 10px, 10px, 10px); */
+   /* grid-template-areas: "icon logo search welcome logout icons"; */
+    /* display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-between; */
     font-size: 1.5rem;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -18,16 +23,25 @@ body {
     border-radius: 3px;
     box-shadow: grey;
     color: white;
+}
 
+#bars {
+    position: absolute;
+    grid-area: 0 / 0 / auto / 1;
 }
 
 .logoutbutton   {
-    opacity: .5;
+    /* opacity: .5; */
     color: white;
 }
+
+.logout {
+    grid-area: 2 / 8 / 3 / 9;
+}
+
 .hello {
-    display: flex;
-    align-content: flex-end;
+    grid-area: 2 / 3 / 3 / 6;
+    text-align: center;
 }
 .hello button {
     border-radius: 5px;
@@ -48,32 +62,32 @@ body {
     align-content: center;
     justify-content: flex-start;
     width: 20%;
-   
+
 }
 
 .search {
     display: flex;
     flex-direction: row;
-    
+
 }
 #search {
     opacity: .3;
     border: none;
     background: none;
-    
+
 }
 
 #textBar {
     padding: 5px;
     width: 100%;
     opacity: .5;
-    
+
 }
 /* sidebar */
 .container {
     display: flex;
     flex: row;
-    min-height: 700px;
+    min-height: 100vh;
     background-color: rgb(21, 175, 21);
 }
 #sidebar {
@@ -82,6 +96,7 @@ body {
 }
 #sidebar thead {
     text-align: left;
+    font-size: .8125rem;
 }
 #sidebar thead tr th {
     padding-bottom: 5px;
@@ -99,7 +114,7 @@ body {
 }
 #sidebar i {
     padding-top: 10px;
-    
+
 }
 .listButton {
     border: none;
@@ -115,7 +130,7 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    
+
 }
 .dropdownmenu {
     display: none;
@@ -129,7 +144,7 @@ body {
 }
 .dropdownmenu a {
     color: white;
-    
+
 }
 .dropRow:hover .dropdownmenu {
     display: flex;
@@ -153,7 +168,6 @@ body {
 }
 
 #taskfield table{
-
     margin: 0;
 }
 
@@ -217,25 +231,38 @@ body {
 .imagesidebar{
     height: 100px;
     width: 160px;
-
+    margin-left: 30px;
+    margin-top: 10px;
 }
 .lists img {
     width: 100px;
     height: 100px;
 }
-
+.main {
+    min-height: 100vh;
+}
 .main ul {
     list-style: none;
     text-align: left;
     margin: 0;
     margin-top: 15px;
-    font-weight: bold;
-
+    /* font-weight: bold; */
 }
+
+.main li {
+    font-family: "Segoe UI",Arial,clean,sans-serif,"Segoe UI Emoji","Segoe UI Symbol"!important;
+    font-size: 1.125rem;
+}
+
+.main i {
+    margin
+}
+
 .main li,
 .main i {
     padding-left: 5px;
     padding-right: 5px;
+
 }
 .taskCount {
     display: flex;
@@ -262,6 +289,22 @@ body {
 .share {
     margin-left: 15px;
 
+
+}
+
+.fa-user {
+    color: white;
+    background-color: green;
+    font-family: MuseoSansRounded, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    border-radius: 4px;
+    border-color: transparent;
+}
+
+.fa-user:hover,
+button.fa-plus:hover {
+    background-image: linear-gradient(45deg, #FFCF00, #2ba735);
+    transition:slidebg 5s linear infinite;
 }
 
 .share button {
