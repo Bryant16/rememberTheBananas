@@ -3,6 +3,7 @@ html
   head
       block head
         title= title
+        meta(name="image" property="og:image" content="https://analogtodigitaldash.s3-us-west-1.amazonaws.com/group_project_1_screen_recording.gif")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(name="title" content="Remember The Bananas")
@@ -10,7 +11,6 @@ html
         meta(property="og:url" content="https://remember-the-bananas.herokuapp.com/")
         meta(property="og:title" content="Remember The Bananas")
         meta(property="og:description" content="A feature-rich clone of Remember The Milk with the ability to add, delete, and search custom tasks and lists. Made using the following technologies: Express, Pug, Sequelize, and password hashing security using bcrypt.")
-        meta(name="image" property="og:image" content="https://analogtodigitaldash.s3-us-west-1.amazonaws.com/group_project_1_screen_recording.gif")
         link(rel='stylesheet' href='/stylesheets/reset.css')
   body
     block content
