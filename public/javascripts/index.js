@@ -69,7 +69,7 @@ const demoUser = document.getElementById("demo_user");
       allTasks.push(taskSelected.innerHTML);
     })
 
-   
+
 
     checkBoxes.forEach( (checkbox, i) => {
       if (checkbox.checked) {
@@ -79,7 +79,7 @@ const demoUser = document.getElementById("demo_user");
 
       }
     })
-    
+
 
     const res = await fetch('tasks', {
       method:"DELETE",
@@ -90,15 +90,14 @@ const demoUser = document.getElementById("demo_user");
     window.location.reload();
   })
 
- 
+
 
     searchButton.addEventListener("click", async (event) => {
       event.preventDefault();
-      window.location.reload();
       const formData = new FormData(formSearch);
 
       const searchValue = formData.get("searchValue");
-      
+
       const res = await fetch("/app/search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -106,18 +105,18 @@ const demoUser = document.getElementById("demo_user");
       });
 
       const { allTasks } = await res.json();
-   
+
       function removeAllChildNodes(parent) {
         while (parent.firstChild) {
             parent.removeChild(parent.firstChild);
         }
     }
       if (allTasks.length) {
-       
+
         const tbody = document.querySelector('.taskRow');
-        
+
         removeAllChildNodes(tbody)
-        
+
         allTasks.map(task => {
           const tr = document.createElement('tr');
           const tdCheck = document.createElement('td');
@@ -126,8 +125,8 @@ const demoUser = document.getElementById("demo_user");
           tdTask.setAttribute("class", "taskListed");
           tdCheck.innerHTML = `<input class="checkbox" type="checkbox">`;
           tdTask.innerHTML = task.name
-          
-       
+
+
           tbody.appendChild(tr);
           tr.appendChild(tdCheck);
           tr.appendChild(tdTask);
@@ -163,5 +162,5 @@ const demoUser = document.getElementById("demo_user");
     })
  
 
-   
+
 })
