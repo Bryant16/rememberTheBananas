@@ -48,12 +48,12 @@ Need multiple every day organizers in one spot? This application is for you! Rem
 4. Open browser to http://localhost:3000/
 
 ### Features
-#### 1
-#### 2
-#### 3
-#### 4
+#### 1. Easy to navigate splash with the ability to sign up as a new user or login as a demo user prior to signing up to see the functionality of the app in full.
+#### 2. Add an entirely new list category 
+#### 3. Add individual tasks to each list
+#### 4. Delete individual or multiple tasks at a given time
+#### 5. Search all tasks within all lists for easy access to what you are looking for 
 ![Alt text](https://raw.githubusercontent.com/Bryant16/rememberTheSilk/main/public/images/group_project_1_screen_recording.gif)
-
 
 [contributors-shield]: https://img.shields.io/github/contributors/Bryant16/rememberTheSilk.svg?style=for-the-badge
 [contributors-url]: https://github.com/Bryant16/rememberTheSilk/graphs/contributors
