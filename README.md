@@ -48,7 +48,7 @@ Need multiple every day organizers in one spot? This application is for you! Rem
 4. Open browser to http://localhost:3000/
 
 ### Features
-#### 1. Easy to navigate splash with the ability to sign up as a new user or login as a demo user prior to signing up to see the functionality of the app in full.
+#### 1. Easy to navigate splash with the ability to sign up as a new user or login as a demo user prior to signing up to see the functionality of the app in full
 #### 2. Add an entirely new list category 
 #### 3. Add individual tasks to each list
 #### 4. Delete individual or multiple tasks at a given time
