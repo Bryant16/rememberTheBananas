@@ -44,8 +44,11 @@ Need multiple every day organizers in one spot? This application is for you! Rem
 
 1. Clone the repo `git clone https://github.com/Bryant16/rememberTheSilk.git`
 2. Download backend dependencies `cd rememberTheSilk/ && npm install`
-3. Start the application `npm start`
-4. Open browser to http://localhost:3000/
+3. Setup database in Postgres by creating a user `CREATE USER <user_name> WITH PASSWORD '<password>' CREATEDB;`
+4. Setup database in Postgres by creating a database `CREATE DATABASE <database_name> WITH OWNER <user_you_just_created>;`
+5. Create .env file based on the example.env file `touch .env`
+6. Start the application `npm start`
+7. Open browser to http://localhost:3000/
 
 ### Features
 #### 1. Easy to navigate splash with the ability to sign up as a new user or login as a demo user prior to signing up to see the functionality of the app in full
