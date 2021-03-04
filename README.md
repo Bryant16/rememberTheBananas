@@ -15,7 +15,7 @@
   
 <h1 align="center"> Remember The Bananas </h1>
 
-This application is made for embedded system Arduino lovers. Instructa-Robos allows you to keep track of your current projects through uploading each personalized project including the code you used to make it happen, and photos of your project. Need inspiration? Feel free to look at other users' projects and add varying functionalities to each project using your own creativity. With up to nine categories and counting you can expand your knowledge on all sorts of topics including analog, digital, communication, controls and much more! Feel free to check it out [here](https://remember-the-bananas.herokuapp.com/).
+Need multiple every day organizers in one spot? This application is for you! Remember The Bananas is a full stack web application that gives users the opportunity to organize tasks of all sorts. This personalized organizer gives users the ability to add new lists, as well as add and delete individual tasks. Remember The Bananas comes with a search feature so that you can find just what you are looking for in no time at all. Feel free to check out the live site [here](https://remember-the-bananas.herokuapp.com/).
 
 ### Built With
 
@@ -54,9 +54,6 @@ This application is made for embedded system Arduino lovers. Instructa-Robos all
 ![Alt text](https://raw.githubusercontent.com/Bryant16/rememberTheSilk/main/public/images/splash%20page.png)
 
 #### 2
-![Alt text](https://raw.githubusercontent.com/Sbutler8/Instructa-Robos/master/frontend/public/images/individualProject.png)
-
-#### 3
 ![Alt text](https://raw.githubusercontent.com/Bryant16/rememberTheSilk/main/public/images/login_signup.png)
 
 [contributors-shield]: https://img.shields.io/github/contributors/Bryant16/rememberTheSilk.svg?style=for-the-badge
