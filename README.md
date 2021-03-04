@@ -42,19 +42,18 @@ Need multiple every day organizers in one spot? This application is for you! Rem
 
 ### Installation
 
-1. Clone the repo `git clone https://github.com/Sbutler8/Instructa-Robos.git`
-2. Download backend dependencies `cd Instructa-Robos/backend && npm install`
-3. Download frontend dependencies `cd ../frontend && npm install`
-4. Start backend `cd ../backend && npm start`
-5. Open new terminal and start frontend `cd ../frontend && npm start`
-6. Open browser to http://localhost:3000/
+1. Clone the repo `git clone https://github.com/Bryant16/rememberTheSilk.git`
+2. Download backend dependencies `cd rememberTheSilk/ && npm install`
+3. Start the application `npm start`
+4. Open browser to http://localhost:3000/
 
 ### Features
 #### 1
-![Alt text](https://raw.githubusercontent.com/Bryant16/rememberTheSilk/main/public/images/splash%20page.png)
-
 #### 2
-![Alt text](https://raw.githubusercontent.com/Bryant16/rememberTheSilk/main/public/images/login_signup.png)
+#### 3
+#### 4
+![Alt text](https://raw.githubusercontent.com/Bryant16/rememberTheSilk/main/public/images/group_project_1_screen_recording.gif)
+
 
 [contributors-shield]: https://img.shields.io/github/contributors/Bryant16/rememberTheSilk.svg?style=for-the-badge
 [contributors-url]: https://github.com/Bryant16/rememberTheSilk/graphs/contributors
