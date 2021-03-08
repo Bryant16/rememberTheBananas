@@ -58,14 +58,14 @@ Need multiple every day organizers in one spot? This application is for you! Rem
 #### 5. Search all tasks within all lists for easy access to what you are looking for 
 ![Alt text](https://raw.githubusercontent.com/Bryant16/rememberTheSilk/main/public/images/group_project_1_screen_recording.gif)
 
-[contributors-shield]: https://img.shields.io/github/contributors/Bryant16/rememberTheSilk.svg?style=for-the-badge
-[contributors-url]: https://github.com/Bryant16/rememberTheSilk/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Bryant16/rememberTheSilk.svg?style=for-the-badge
-[forks-url]: https://github.com/Bryant16/rememberTheSilk/network/members
-[stars-shield]: https://img.shields.io/github/stars/Bryant16/rememberTheSilk.svg?style=for-the-badge
-[stars-url]: https://github.com/Bryant16/rememberTheSilk/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Bryant16/rememberTheSilk.svg?style=for-the-badge
-[issues-url]: https://github.com/Bryant16/rememberTheSilk/issues
+[contributors-shield]: https://img.shields.io/github/contributors/Bryant16/rememberTheBananas.svg?style=for-the-badge
+[contributors-url]: https://github.com/Bryant16/rememberTheBananas/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Bryant16/rememberTheBananas.svg?style=for-the-badge
+[forks-url]: https://github.com/Bryant16/rememberTheBananas/network/members
+[stars-shield]: https://img.shields.io/github/stars/Bryant16/rememberTheBananas.svg?style=for-the-badge
+[stars-url]: https://github.com/Bryant16/rememberTheBananas/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Bryant16/rememberTheBananas.svg?style=for-the-badge
+[issues-url]: https://github.com/Bryant16/rememberTheBananas/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/samantha-butler-410675178/
 [linkedin-url1]: https://www.linkedin.com/in/nicholas-bierman-950970105/
