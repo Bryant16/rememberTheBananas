@@ -2,7 +2,16 @@ doctype html
 html
   head
       block head
-        title= title
+        title=title
         link(rel='stylesheet' href='/stylesheets/reset.css')
+        meta(name="title" content="Remember The Bananas")
+        meta(name="description" content="https://remember-the-bananas.herokuapp.com/ A feature-rich clone of Remember The Milk with the ability to add, delete, and search custom tasks and lists. Made using the following technologies: Express, Pug, Sequelize, and password hashing security using bcrypt.")
+        meta(property="og:type" content="website")
+        meta(name='description', content='Some description')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(property="og:url" content="https://remember-the-bananas.herokuapp.com/")
+        meta(property="og:title" content="Remember The Bananas")
+        meta(property="og:description" content="https://remember-the-bananas.herokuapp.com/ A feature-rich clone of Remember The Milk with the ability to add, delete, and search custom tasks and lists. Made using the following technologies: Express, Pug, Sequelize, and password hashing security using bcrypt.")
+        meta(property="og:image" content="https://analogtodigitaldash.s3-us-west-1.amazonaws.com/group_project_1_screen_recording.gif")
   body
     block content
